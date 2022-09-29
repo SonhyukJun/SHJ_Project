@@ -75,6 +75,36 @@ public class BoardServiceImpl implements BoardService {
 		dao.modifyTradeNoPicture(boardVo);
 	}
 
+	@Override
+	public BoardVO latelyBoard1(BoardVO boardVo) throws Exception {
+		return dao.latelyBoard1(boardVo);
+	}
+
+	@Override
+	public BoardVO latelyBoard2(BoardVO boardVo) throws Exception {
+		return dao.latelyBoard2(boardVo);
+	}
+
+	@Override
+	public BoardVO latelyBoard3(BoardVO boardVo) throws Exception {
+		return dao.latelyBoard3(boardVo);
+	}
+
+	@Override
+	public BoardVO latelyBoard4(BoardVO boardVo) throws Exception {
+		return dao.latelyBoard4(boardVo);
+	}
+
+	@Override
+	public BoardVO latelyBoard5(BoardVO boardVo) throws Exception {
+		return dao.latelyBoard5(boardVo);
+	}
+
+	@Override
+	public BoardVO latelyBoard6(BoardVO boardVo) throws Exception {
+		return dao.latelyBoard6(boardVo);
+	}
+
 	
 	//***********************************************************************
 

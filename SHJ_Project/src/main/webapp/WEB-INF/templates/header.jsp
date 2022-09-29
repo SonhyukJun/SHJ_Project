@@ -42,6 +42,7 @@
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="main.do">홈</a></li>
                         <li class="nav-item"><a class="nav-link" href="main.do#services">안내</a></li>
+                        <li class="nav-item"><a class="nav-link" href="main.do#portfolio">최근 글 보기</a></li>
                         <li class="nav-item"><a class="nav-link" href="tradeList.do">거래하러가기</a></li>
                         <%
                         	if(sessionId == null) {

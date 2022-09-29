@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="UTF-8">
 <head>
@@ -30,8 +33,8 @@
         <section class="page-section" id="services">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Services</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading text-uppercase">안내문</h2>
+                    <h3 class="section-subheading text-muted">안전한 중고거래를 위해 다음 사항을 지켜주세요</h3>
                 </div>
                 <div class="row text-center">
                     <div class="col-md-4">
@@ -39,24 +42,24 @@
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="my-3">E-Commerce</h4>
-                        <p class="text-muted">게시글 등록 기준 위반 및 거래 제한 품목 거래를 금지합니다.</p>
+                        <h4 class="my-3">게시글 등록</h4>
+                        <p class="text-muted">게시글 등록 기준 위반<br> 및 거래 제한 품목 거래를 금지합니다.</p>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="my-3">Responsive Design</h4>
-                        <p class="text-muted">다른 회원의 거래를 악의적으로 방해하는 행위 및 비하, 욕설, 댓글, 답글, 게시글 작성을 금지합니다.</p>
+                        <h4 class="my-3">비매너 사용자</h4>
+                        <p class="text-muted">다른 회원의 거래를 악의적으로 방해하는 행위 및 비하,<br> 욕설, 게시글 작성을 금지합니다.</p>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="my-3">Web Security</h4>
-                        <p class="text-muted">검색 상단 노출, 스팸성 홍보 등의 게시글 도배 및 댓글 도배 행위는 금지합니다.</p>
+                        <h4 class="my-3">안정성</h4>
+                        <p class="text-muted">신고 절차가 진행 되면<br> 게시글 작성을 제한합니다.</p>
                     </div>
                 </div>
             </div>
@@ -65,23 +68,25 @@
         <!-- Portfolio Grid-->
         <section class="page-section bg-light" id="portfolio">
             <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Portfolio</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <div class="text-center">                	
+                    <h2 class="section-heading text-uppercase">최근 게시글</h2>
+                    <h3 class="section-subheading text-muted">클릭 시 최근 게시글로 이동합니다.</h3>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <!-- Portfolio item 1-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                            <c:set var="lately1" value="${latelyBoard1 }"/>
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="resource/assets/img/portfolio/1.jpg" alt="..." />
+                                <img class="img-fluid" src="${pageContext.request.contextPath}/resource/upload/${lately1.picture}" style="width: 400px; height: 300px;" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Threads</div>
-                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                                <div class="portfolio-caption-heading">${lately1.title }</div>
+                                <div class="portfolio-caption-subheading text-muted">${lately1.content }</div>
+                                <div class="portfolio-caption-subheading text-muted">${lately1.price }원</div>
                             </div>
                         </div>
                     </div>
@@ -89,14 +94,16 @@
                         <!-- Portfolio item 2-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+                            <c:set var="lately2" value="${latelyBoard2 }"/>
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="resource/assets/img/portfolio/2.jpg" alt="..." />
+                                 <img class="img-fluid" src="${pageContext.request.contextPath}/resource/upload/${lately2.picture}" style="width: 400px; height: 300px;" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Explore</div>
-                                <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+                                <div class="portfolio-caption-heading">${lately2.title }</div>
+                                <div class="portfolio-caption-subheading text-muted">${lately2.content }</div>
+                                <div class="portfolio-caption-subheading text-muted">${lately2.price }원</div>
                             </div>
                         </div>
                     </div>
@@ -104,14 +111,16 @@
                         <!-- Portfolio item 3-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+                            <c:set var="lately3" value="${latelyBoard3 }"/>
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="resource/assets/img/portfolio/3.jpg" alt="..." />
+                               <img class="img-fluid" src="${pageContext.request.contextPath}/resource/upload/${lately3.picture}" style="width: 400px; height: 300px;" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Finish</div>
-                                <div class="portfolio-caption-subheading text-muted">Identity</div>
+                                <div class="portfolio-caption-heading">${lately3.title }</div>
+                                <div class="portfolio-caption-subheading text-muted">${lately3.content }</div>
+                                <div class="portfolio-caption-subheading text-muted">${lately3.price }원</div>
                             </div>
                         </div>
                     </div>
@@ -119,14 +128,16 @@
                         <!-- Portfolio item 4-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
+                            <c:set var="lately4" value="${latelyBoard4 }"/>
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="resource/assets/img/portfolio/4.jpg" alt="..." />
+                                <img class="img-fluid" src="${pageContext.request.contextPath}/resource/upload/${lately4.picture}" style="width: 400px; height: 300px;" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Lines</div>
-                                <div class="portfolio-caption-subheading text-muted">Branding</div>
+                                <div class="portfolio-caption-heading">${lately4.title }</div>
+                                <div class="portfolio-caption-subheading text-muted">${lately4.content }</div>
+                                <div class="portfolio-caption-subheading text-muted">${lately4.price }원</div>
                             </div>
                         </div>
                     </div>
@@ -134,14 +145,16 @@
                         <!-- Portfolio item 5-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
+                            <c:set var="lately5" value="${latelyBoard5 }"/>
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="resource/assets/img/portfolio/5.jpg" alt="..." />
+                                <img class="img-fluid" src="${pageContext.request.contextPath}/resource/upload/${lately5.picture}" style="width: 400px; height: 300px;" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Southwest</div>
-                                <div class="portfolio-caption-subheading text-muted">Website Design</div>
+                                <div class="portfolio-caption-heading">${lately5.title }</div>
+                                <div class="portfolio-caption-subheading text-muted">${lately5.content }</div>
+                                <div class="portfolio-caption-subheading text-muted">${lately5.price }원</div>
                             </div>
                         </div>
                     </div>
@@ -149,14 +162,16 @@
                         <!-- Portfolio item 6-->
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
+                            <c:set var="lately6" value="${latelyBoard6 }"/>
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="resource/assets/img/portfolio/6.jpg" alt="..." />
+                                <img class="img-fluid" src="${pageContext.request.contextPath}/resource/upload/${lately6.picture}" style="width: 400px; height: 300px;" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Window</div>
-                                <div class="portfolio-caption-subheading text-muted">Photography</div>
+                                <div class="portfolio-caption-heading">${lately6.title }</div>
+                                <div class="portfolio-caption-subheading text-muted">${lately6.content }</div>
+                                <div class="portfolio-caption-subheading text-muted">${lately6.price }원</div>
                             </div>
                         </div>
                     </div>
@@ -178,23 +193,30 @@
                             <div class="col-lg-8">
                                 <div class="modal-body">
                                     <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="resource/assets/img/portfolio/1.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <h2 class="text-uppercase">${lately1.title }</h2>                                    
+                                    <img class="img-fluid d-block mx-auto" src="${pageContext.request.contextPath}/resource/upload/${lately1.picture}" alt="..." />                                    
                                     <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Threads
+                                    	<li>
+                                            <strong>판매자:</strong>
+                                            ${lately1.memberId }
                                         </li>
                                         <li>
-                                            <strong>Category:</strong>
-                                            Illustration
+                                            <strong>가격:</strong>
+                                             ${lately1.price }원
+                                        </li>
+                                        <li>
+                                            <strong>작성일자:</strong>
+                                            <fmt:formatDate value="${lately1.writeDate }" pattern="yyyy년 MM월 dd일"/>
                                         </li>
                                     </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" 
+                                     onclick="location.href='selectDetailTrade.do?boardNo=${lately1.boardNo}&memberId=${lately1.memberId}'" type="button">
+                                        <i class="fas fa-square-ellipsis me-1"></i>
+   										게시글보러가기
+                                    </button>
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                                         <i class="fas fa-xmark me-1"></i>
-                                        Close Project
+										닫기
                                     </button>
                                 </div>
                             </div>
@@ -213,23 +235,30 @@
                             <div class="col-lg-8">
                                 <div class="modal-body">
                                     <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="resource/assets/img/portfolio/2.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <h2 class="text-uppercase">${lately2.title }</h2>                                    
+                                    <img class="img-fluid d-block mx-auto" src="${pageContext.request.contextPath}/resource/upload/${lately2.picture}" alt="..." />                                    
                                     <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Explore
+                                    	<li>
+                                            <strong>판매자:</strong>
+                                            ${lately2.memberId }
                                         </li>
                                         <li>
-                                            <strong>Category:</strong>
-                                            Graphic Design
+                                            <strong>가격:</strong>
+                                             ${lately2.price }원
+                                        </li>
+                                        <li>
+                                            <strong>작성일자:</strong>
+                                            <fmt:formatDate value="${lately2.writeDate }" pattern="yyyy년 MM월 dd일"/>
                                         </li>
                                     </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" 
+                                     onclick="location.href='selectDetailTrade.do?boardNo=${lately2.boardNo}&memberId=${lately2.memberId}'" type="button">
+                                     <i class="fas fa-square-ellipsis me-1"></i>
+   										게시글보러가기
+                                    </button>
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                                         <i class="fas fa-xmark me-1"></i>
-                                        Close Project
+										닫기
                                     </button>
                                 </div>
                             </div>
@@ -247,24 +276,30 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="resource/assets/img/portfolio/3.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                   <h2 class="text-uppercase">${lately3.title }</h2>                                    
+                                    <img class="img-fluid d-block mx-auto" src="${pageContext.request.contextPath}/resource/upload/${lately3.picture}" alt="..." />                                    
                                     <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Finish
+                                    	<li>
+                                            <strong>판매자:</strong>
+                                            ${lately3.memberId }
                                         </li>
                                         <li>
-                                            <strong>Category:</strong>
-                                            Identity
+                                            <strong>가격:</strong>
+                                             ${lately3.price }원
+                                        </li>
+                                        <li>
+                                            <strong>작성일자:</strong>
+                                            <fmt:formatDate value="${lately3.writeDate }" pattern="yyyy년 MM월 dd일"/>
                                         </li>
                                     </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" 
+                                     onclick="location.href='selectDetailTrade.do?boardNo=${lately3.boardNo}&memberId=${lately3.memberId}'" type="button">
+                                        <i class="fas fa-square-ellipsis me-1"></i>
+   										게시글보러가기
+                                    </button>
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                                         <i class="fas fa-xmark me-1"></i>
-                                        Close Project
+										닫기
                                     </button>
                                 </div>
                             </div>
@@ -282,24 +317,30 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="resource/assets/img/portfolio/4.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <h2 class="text-uppercase">${lately4.title }</h2>                                    
+                                    <img class="img-fluid d-block mx-auto" src="${pageContext.request.contextPath}/resource/upload/${lately4.picture}" alt="..." />                                    
                                     <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Lines
+                                    	<li>
+                                            <strong>판매자:</strong>
+                                            ${lately4.memberId }
                                         </li>
                                         <li>
-                                            <strong>Category:</strong>
-                                            Branding
+                                            <strong>가격:</strong>
+                                             ${lately4.price }원
+                                        </li>
+                                        <li>
+                                            <strong>작성일자:</strong>
+                                            <fmt:formatDate value="${lately4.writeDate }" pattern="yyyy년 MM월 dd일"/>
                                         </li>
                                     </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" 
+                                     onclick="location.href='selectDetailTrade.do?boardNo=${lately4.boardNo}&memberId=${lately4.memberId}'" type="button">
+                                        <i class="fas fa-square-ellipsis me-1"></i>
+   										게시글보러가기
+                                    </button>
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                                         <i class="fas fa-xmark me-1"></i>
-                                        Close Project
+										닫기
                                     </button>
                                 </div>
                             </div>
@@ -317,24 +358,30 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="resource/assets/img/portfolio/5.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <h2 class="text-uppercase">${lately5.title }</h2>                                    
+                                    <img class="img-fluid d-block mx-auto" src="${pageContext.request.contextPath}/resource/upload/${lately5.picture}" alt="..." />                                    
                                     <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Southwest
+                                    	<li>
+                                            <strong>판매자:</strong>
+                                            ${lately5.memberId }
                                         </li>
                                         <li>
-                                            <strong>Category:</strong>
-                                            Website Design
+                                            <strong>가격:</strong>
+                                             ${lately5.price }원
+                                        </li>
+                                        <li>
+                                            <strong>작성일자:</strong>
+                                            <fmt:formatDate value="${lately5.writeDate }" pattern="yyyy년 MM월 dd일"/>
                                         </li>
                                     </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" 
+                                     onclick="location.href='selectDetailTrade.do?boardNo=${lately5.boardNo}&memberId=${lately5.memberId}'" type="button">
+                                        <i class="fas fa-square-ellipsis me-1"></i>
+   										게시글보러가기
+                                    </button>
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                                         <i class="fas fa-xmark me-1"></i>
-                                        Close Project
+										닫기
                                     </button>
                                 </div>
                             </div>
@@ -352,24 +399,30 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="resource/assets/img/portfolio/6.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                   <h2 class="text-uppercase">${lately6.title }</h2>                                    
+                                    <img class="img-fluid d-block mx-auto" src="${pageContext.request.contextPath}/resource/upload/${lately6.picture}" alt="..." />                                    
                                     <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Window
+                                    	<li>
+                                            <strong>판매자:</strong>
+                                            ${lately6.memberId }
                                         </li>
                                         <li>
-                                            <strong>Category:</strong>
-                                            Photography
+                                            <strong>가격:</strong>
+                                             ${lately6.price }원
+                                        </li>
+                                        <li>
+                                            <strong>작성일자:</strong>
+                                            <fmt:formatDate value="${lately6.writeDate }" pattern="yyyy년 MM월 dd일"/>
                                         </li>
                                     </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" 
+                                     onclick="location.href='selectDetailTrade.do?boardNo=${lately6.boardNo}&memberId=${lately6.memberId}'" type="button">
+                                        <i class="fas fa-square-ellipsis me-1"></i>
+   										게시글보러가기
+                                    </button>
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
                                         <i class="fas fa-xmark me-1"></i>
-                                        Close Project
+										닫기
                                     </button>
                                 </div>
                             </div>

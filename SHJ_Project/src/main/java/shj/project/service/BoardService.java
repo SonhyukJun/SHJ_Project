@@ -25,6 +25,18 @@ public interface BoardService {
 	void modifyTradeInPicture(BoardVO boardVo) throws Exception;
 
 	void modifyTradeNoPicture(BoardVO boardVo) throws Exception;
+	
+	BoardVO latelyBoard1(BoardVO boardVo) throws Exception;
+	
+	BoardVO latelyBoard2(BoardVO boardVo) throws Exception;
+	
+	BoardVO latelyBoard3(BoardVO boardVo) throws Exception;
+	
+	BoardVO latelyBoard4(BoardVO boardVo) throws Exception;
+	
+	BoardVO latelyBoard5(BoardVO boardVo) throws Exception;
+	
+	BoardVO latelyBoard6(BoardVO boardVo) throws Exception;
 
 	// ***********************************************************************
 
