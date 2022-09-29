@@ -105,6 +105,21 @@ display: inline-block;
 				</nav> 
 			</div>
 		</div>
+		<form action="listMemberAdmin.do">
+			<table class="table">
+				<tr>
+					<td align="center">						
+						<select name="searchCondition1" class="input-sm text-center">
+							<c:forEach items="${conditionMap1}" var="option">
+								<option value="${option.value}">${option.key }
+							</c:forEach>
+						</select>
+						<input name="searchKeyword1" type="text"/>
+						<input type="submit" class="btn btn-dark" value="검색"/>
+					</td>
+				</tr>
+			</table>
+		</form>
 	</div>
 </div>
 </section>

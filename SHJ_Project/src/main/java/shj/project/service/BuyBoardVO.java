@@ -13,6 +13,9 @@ public class BuyBoardVO {
 	private String buyId;
 	private String buyStatus;
 	
+	private String searchCondition3;
+	private String searchKeyword3;
+	
 	private int viewPage = 1;
 	private int startIndex = 0;
 	private int endIndex = 10;

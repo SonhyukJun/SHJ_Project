@@ -102,7 +102,7 @@ display: inline-block;
 				<thead>
 					<tr>
 						<th style="max-width: 70px">글번호</th>										
-						<th style="max-width: 200px">작성자</th>
+						<th style="max-width: 200px">판매자</th>
 						<th style="max-width: 200px">글제목</th>
 						<th style="max-width: 100px">신고날짜</th>	
 						<th style="max-width: 150px">신고내용</th>			
@@ -162,6 +162,21 @@ display: inline-block;
 				</nav> 
 			</div>
 		</div>
+		<form action="listReportBoardAdmin.do">
+			<table class="table">
+				<tr>
+					<td align="center">						
+						<select name="searchCondition5" class="input-sm text-center">
+							<c:forEach items="${conditionMap5}" var="option">
+								<option value="${option.value}">${option.key }
+							</c:forEach>
+						</select>
+						<input name="searchKeyword5" type="text"/>
+						<input type="submit" class="btn btn-dark" value="검색"/>
+					</td>
+				</tr>
+			</table>
+		</form>
 	</div>
 </div>
 </section>

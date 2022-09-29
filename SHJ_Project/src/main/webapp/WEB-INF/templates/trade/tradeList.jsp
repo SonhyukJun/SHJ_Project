@@ -46,20 +46,21 @@ display: inline-block;
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
+<resources mapping="/image/**" locatio="file:///c:/test/"/>
 <section>
 <div class="container">	
 	<div class="text-center">
 	<h2 class="section-heading">게시글 리스트</h2>
-		<div class="container" style="max-width: 900px">
+		<div class="container" style="max-width: 1500px">
 			<br><br>
 			<c:forEach var="board" items="${boardList }">
 			<a href="selectDetailTrade.do?boardNo=${board.boardNo}&memberId=${board.memberId}">
 			<div style="display:inline-flex; flex-direction:column; justify-content:flex-start; align-items:center;">
-			<img src="${pageContext.request.contextPath}/resource/upload/${board.picture}" class="img-thumbnail" style="max-width: 150px; height: 100px;">
-				<table class="table" >	
+			<img src="${pageContext.request.contextPath}/resource/upload/${board.picture}" class="img-thumbnail" style="max-width: 150px; height: 100px;">			
+				<table class="table" >
 						<tr>
 							<th>제목</th>
-							<td>
+							<td colspan="3">
 							<c:set var="title" value="${board.title}"/>
 							<c:set var="titleView" value="${fn:substring(title,0,8) }"/>
 							<c:choose>
@@ -73,20 +74,20 @@ display: inline-block;
 							</td>	
 						</tr>
 						<tr>
-							<th>가격</th>
-							<td>${board.price}</td>	
-						</tr>
-						<tr>
 							<th>분류</th>
-							<td>${board.boardType}</td>	
+							<td style="width: 100">${board.boardType}</td>
+							<th>카테고리</th>
+							<td style="width: 100">${board.itemType}</td>
 						</tr>
 						<tr>
+							<th>가격</th>
+							<td style="width: 100">${board.price}</td>
 							<th>작성자</th>
-							<td>${board.memberId}</td>
+							<td style="width: 100">${board.memberId}</td>
 						</tr>
 						<tr>
 							<th>작성일</th>
-							<td><fmt:formatDate value="${board.writeDate}" pattern="yy-MM-dd HH:mm"/></td>
+							<td colspan="3"><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd HH:mm"/></td>
 						</tr>
 				</table>
 			</div>
@@ -97,7 +98,6 @@ display: inline-block;
 				<input type="button" onclick="location.href='tradeInsert.do'"  class="btn btn-dark"  value="글쓰기" />
 			</div>
 		</div>
-
 		<div class="text-center">			
 			<br><br>
 			<div class="text-center">
@@ -116,10 +116,24 @@ display: inline-block;
 				</nav> 
 			</div>
 		</div>
+		<form action="tradeList.do">
+			<table class="table">
+				<tr>
+					<td align="center">						
+						<select name="searchCondition" class="input-sm text-center">
+							<c:forEach items="${conditionMap}" var="option">
+								<option value="${option.value}">${option.key }
+							</c:forEach>
+						</select>
+						<input name="searchKeyword" type="text"/>
+						<input type="submit" class="btn btn-dark" value="검색"/>
+					</td>
+				</tr>
+			</table>
+		</form>
 	</div>
 </div>
 </section>
-
 <jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

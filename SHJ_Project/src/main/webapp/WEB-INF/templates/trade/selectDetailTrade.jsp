@@ -161,6 +161,10 @@ width:600px;
 				<td align="left"><input id="title" name="title" readonly="readonly" style="background: white;" class="col-md-1 form-control input-sm" type="text" size="52" value="${selectDetailTrade.title }"/></td>
 			</tr>
 			<tr>
+				<th style="padding:13px 0 0 15px" width="100">카테고리</th>
+				<td align="left"><input id="title" name="title" readonly="readonly" style="background: white;" class="col-md-1 form-control input-sm" type="text" size="52" value="${selectDetailTrade.itemType }"/></td>
+			</tr>
+			<tr>
 				<th style="padding:13px 0 0 15px" width="100">가격</th>
 				<td align="left"><input id="price" name="price" readonly="readonly" style="background: white;" class="col-md-1 form-control input-sm" type="text" size="52" value="${selectDetailTrade.price }"/></td>
 			</tr>

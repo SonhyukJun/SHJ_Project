@@ -61,15 +61,15 @@ display: inline-block;
 				</td>
 			</tr>
 			<tr>  
-				<th style="padding:13px 0 0 15px" width="100">물품분류</th>
+				<th style="padding:13px 0 0 15px" width="100">카테고리</th>
 				<td>
 				<div class="pull-left">
 					<select id="itemType" name="itemType" class="form-control input-sm text-center" >				
-						<option value="가전제품" selected="${board.boardType=='가전제품'}">가전제품</option>
-						<option value="가구" selected="${board.boardType=='가구'}">가구</option>
-						<option value="전자제품" selected="${board.boardType=='전자제품'}">전자제품</option>
-						<option value="식품" selected="${board.boardType=='식품'}">식품</option>
-						<option value="기타" selected="${board.boardType=='기타'}">기타</option>																
+						<option value="가전제품" selected="${board.itemType=='가전제품'}">가전제품</option>
+						<option value="가구" selected="${board.itemType=='가구'}">가구</option>
+						<option value="전자제품" selected="${board.itemType=='전자제품'}">전자제품</option>
+						<option value="식품" selected="${board.itemType=='식품'}">식품</option>
+						<option value="기타" selected="${board.itemType=='기타'}">기타</option>																
 					</select>
 				</div>
 				</td>

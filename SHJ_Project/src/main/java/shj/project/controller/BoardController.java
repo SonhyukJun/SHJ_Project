@@ -2,7 +2,9 @@ package shj.project.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -76,7 +78,7 @@ public class BoardController {
 				fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."), fileRealName.length());
 			}
 
-			String uploadFoler = "C:\\Users\\HP\\Desktop\\eGovFrameDev-3.10.0-64bit\\workspace\\SHJ_Project\\src\\main\\webapp\\resource\\upload";
+			String uploadFoler = "C:\\Users\\HP\\git\\SHJ_Project\\SHJ_Project\\src\\main\\webapp\\resource\\upload";
 
 			UUID uuid = UUID.randomUUID();
 			String[] uuids = uuid.toString().split("-");
@@ -123,6 +125,13 @@ public class BoardController {
 		boardVo.setPageList(pageList);
 		boardVo.setFirstPage(firstPage);
 		boardVo.setLastPage(lastPage);
+		
+		if(boardVo.getSearchCondition()==null) {
+			boardVo.setSearchCondition("TITLE");
+		}
+		if(boardVo.getSearchKeyword()==null) {
+			boardVo.setSearchKeyword("");
+		}
 
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("pageList", pageList);
@@ -133,6 +142,15 @@ public class BoardController {
 		return "trade/tradeList";
 	}
 
+	@ModelAttribute("conditionMap")
+	public Map<String, String> searchConditionMap() {
+		Map<String, String> conditionMap = new HashMap<String, String>();
+		conditionMap.put("제목", "TITLE");
+		conditionMap.put("내용", "CONTENT");
+		conditionMap.put("카테고리", "ITEMTYPE");		
+		return conditionMap;
+	}
+	
 	@RequestMapping(value = "/selectDetailTrade.do", method = RequestMethod.GET)
 	public String selectDetailTradeForm(int boardNo, Model model, String memberId) throws Exception {
 		double stars = serviceM.totalStars(memberId);
@@ -179,7 +197,7 @@ public class BoardController {
 
 		if (fileRealName != "") {
 			fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."), fileRealName.length());
-			String uploadFoler = "C:\\Users\\HP\\Desktop\\eGovFrameDev-3.10.0-64bit\\workspace\\SHJ_Project\\src\\main\\webapp\\resource\\upload";
+			String uploadFoler = "C:\\Users\\HP\\git\\SHJ_Project\\SHJ_Project\\src\\main\\webapp\\resource\\upload";
 
 			UUID uuid = UUID.randomUUID();
 			String[] uuids = uuid.toString().split("-");

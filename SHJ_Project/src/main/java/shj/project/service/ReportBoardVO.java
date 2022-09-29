@@ -17,6 +17,9 @@ public class ReportBoardVO {
 	private String memberId;
 	private String authority;
 	
+	private String searchCondition5;
+	private String searchKeyword5;
+	
 	private int viewPage = 1;
 	private int startIndex = 0;
 	private int endIndex = 10;

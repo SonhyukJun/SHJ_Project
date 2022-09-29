@@ -7,6 +7,7 @@
 		<result property="content" column="content" />
 		<result property="writeDate" column="writeDate" />
 		<result property="boardType" column="boardType" />
+		<result property="itemType" column="itemType" />
 		<result property="memberId" column="memberId" />
 		<result property="picture" column="picture" />
 		<result property="countingStars" column="countingStars" />
@@ -15,12 +16,24 @@
 	</resultMap>
 	
 	<insert id="insertBoard">
-		insert into board (title, content, writeDate, boardType, memberId, picture, boardStatus, price)
-		values(#{title}, #{content}, now(), #{boardType}, #{memberId}, #{picture}, #{boardStatus}, #{price})
+		insert into board (title, content, writeDate, boardType, itemType, memberId, picture, boardStatus, price)
+		values(#{title}, #{content}, now(), #{boardType}, #{itemType}, #{memberId}, #{picture}, #{boardStatus}, #{price})
 	</insert>
 	
 	<select id="listBoard" resultMap="boardResult">
-		select * from board where 1=1 order by boardNo desc limit #{startIndex}, #{endIndex}
+		select * from board
+		<where>
+			<if test="searchCondition=='TITLE'">
+				AND TITLE LIKE CONCAT('%',#{searchKeyword},'%')
+			</if>
+			<if test="searchCondition=='CONTENT'">
+				AND CONTENT LIKE CONCAT('%',#{searchKeyword},'%')
+			</if>
+			<if test="searchCondition=='ITEMTYPE'">
+				AND ITEMTYPE LIKE CONCAT('%',#{searchKeyword},'%')
+			</if>
+		</where>
+		order by boardNo desc limit #{startIndex}, #{endIndex}
 	</select>
 	
 	<select id="selectDetailTrade" resultMap="boardResult">
@@ -52,15 +65,25 @@
 	</delete>
 	
 	<update id="modifyTradeInPicture">
-		update board set title=#{title}, content=#{content}, picture=#{picture}, price=#{price} where boardNo=#{boardNo}
+		update board set title=#{title}, content=#{content}, picture=#{picture}, itemType=${itemType}, price=#{price} where boardNo=#{boardNo}
 	</update>
 	
 	<update id="modifyTradeNoPicture">
-		update board set title=#{title}, content=#{content}, price=#{price} where boardNo=#{boardNo}
+		update board set title=#{title}, content=#{content}, itemType=${itemType}, price=#{price} where boardNo=#{boardNo}
 	</update>
 	
 	<select id="listboardAdmin" resultMap="boardResult">
-		SELECT * FROM board WHERE 1=1 ORDER BY boardNo DESC LIMIT #{startIndex2}, #{endIndex2}
+		SELECT * FROM board WHERE 1=1 
+		<if test="searchCondition2=='BOARDNO'">
+			AND BOARDNO LIKE CONCAT('%',#{searchKeyword2},'%')
+		</if>
+		<if test="searchCondition2=='TITLE'">
+			AND TITLE LIKE CONCAT('%',#{searchKeyword2},'%')
+		</if>
+		<if test="searchCondition2=='BOARDSTATUS'">
+			AND BOARDSTATUS LIKE CONCAT('%',#{searchKeyword2},'%')
+		</if>
+		ORDER BY boardNo DESC LIMIT #{startIndex2}, #{endIndex2}
 	</select>
 	
 <!-- **************************************************************************************************************************** -->	
@@ -94,7 +117,17 @@
 	</update>
 	
 	<select id="listBuyBoardAdmin" resultMap="buyboardResult">
-		select * from buyboard where 1=1 limit #{startIndex}, #{endIndex}
+		select * from buyboard where 1=1
+		<if test="searchCondition3=='BUYBOARDNO'">
+			AND BUYBOARDNO LIKE CONCAT('%',#{searchKeyword3},'%')
+		</if>
+		<if test="searchCondition3=='BUYTITLE'">
+			AND BUYTITLE LIKE CONCAT('%',#{searchKeyword3},'%')
+		</if>
+		<if test="searchCondition3=='BUYSTATUS'">
+			AND BUYSTATUS LIKE CONCAT('%',#{searchKeyword3},'%')
+		</if>		
+		limit #{startIndex}, #{endIndex}
 	</select>
 	
 	<select id="totalBuyBoard" resultType="int">
@@ -149,6 +182,15 @@
 	
 	<select id="listReviewBoardAdmin" resultMap="reviewboardResult">
 		select * from reviewboard where 1=1 
+		<if test="searchCondition4=='BUYBOARDNO'">
+			AND BUYBOARDNO LIKE CONCAT('%',#{searchKeyword4},'%')
+		</if>
+		<if test="searchCondition4=='SELLID'">
+			AND SELLID LIKE CONCAT('%',#{searchKeyword4},'%')
+		</if>
+		<if test="searchCondition4=='BUYID'">
+			AND BUYID LIKE CONCAT('%',#{searchKeyword4},'%')
+		</if>		
 		limit #{startIndex}, #{endIndex}
 	</select>
 	
@@ -179,6 +221,15 @@
 	<select id="listReportBoardAdmin" resultMap="reportboardResult">
 		SELECT a.*, b.Authority FROM reportboard a, member b
 		WHERE a.reportMemberId = b.memberId
+		<if test="searchCondition5=='BUYBOARDNO'">
+			AND BUYBOARDNO LIKE CONCAT('%',#{searchKeyword5},'%')
+		</if>
+		<if test="searchCondition5=='REPORTMEMBERID'">
+			AND REPORTMEMBERID LIKE CONCAT('%',#{searchKeyword5},'%')
+		</if>
+		<if test="searchCondition5=='MEMBERID'">
+			AND MEMBERID LIKE CONCAT('%',#{searchKeyword5},'%')
+		</if>	
 		order by reportDate desc
 		limit #{startIndex}, #{endIndex}
 	</select>

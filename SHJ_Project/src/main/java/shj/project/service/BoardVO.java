@@ -12,7 +12,8 @@ public class BoardVO {
 	private String title;
 	private String content;
 	private Date writeDate;
-	private String boardType;	
+	private String boardType;
+	private String itemType;
 	private String picture;
 	private int countingStars;
 	private String boardStatus;
@@ -22,13 +23,20 @@ public class BoardVO {
 	
 	private String buyId;
 	
-	public BoardVO(String title, String content, Date writeDate, String boardType, String picture, int countingStars,
+	private String searchCondition;
+	private String searchKeyword;
+	
+	private String searchCondition2;
+	private String searchKeyword2;
+	
+	public BoardVO(String title, String content, Date writeDate, String boardType, String itemType, String picture, int countingStars,
 			String memberId, String boardStatus, int price) {
 		super();
 		this.title = title;
 		this.content = content;
 		this.writeDate = writeDate;
 		this.boardType = boardType;
+		this.itemType = itemType;
 		this.picture = picture;
 		this.countingStars = countingStars;
 		this.memberId = memberId;

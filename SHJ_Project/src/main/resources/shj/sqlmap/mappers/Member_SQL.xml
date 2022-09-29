@@ -68,6 +68,15 @@
 	
 	<select id="listMemberAdmin" resultMap="membersResult">
 		select * from member where memberId NOT in ('admin')
+		<if test="searchCondition1=='MEMBERID'">
+			AND MEMBERID LIKE CONCAT('%',#{searchKeyword1},'%')
+		</if>
+		<if test="searchCondition1=='MEMBERNAME'">
+			AND MEMBERNAME LIKE CONCAT('%',#{searchKeyword1},'%')
+		</if>
+		<if test="searchCondition1=='AUTHORITY'">
+			AND AUTHORITY LIKE CONCAT('%',#{searchKeyword1},'%')
+		</if>
 		limit #{startIndex}, #{endIndex}		
 	</select>
 	

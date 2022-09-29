@@ -13,6 +13,9 @@ public class ReviewBoardVO {
 	private int countingStars;
 	private String reviewContent;
 	
+	private String searchCondition4;
+	private String searchKeyword4;	
+	
 	private int viewPage = 1;
 	private int startIndex = 0;
 	private int endIndex = 10;

@@ -13,6 +13,9 @@ public class MemberVO {
 	private String memberAddress;
 	private String authority;
 	
+	private String searchCondition1;
+	private String searchKeyword1;
+	
 	private int viewPage = 1;
 	private int startIndex = 0;
 	private int endIndex = 10;
