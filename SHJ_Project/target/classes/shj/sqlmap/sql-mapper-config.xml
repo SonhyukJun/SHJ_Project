@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>  
+    <typeAliases>
+		<typeAlias type="shj.project.service.MemberVO" alias="member" />		
+		<typeAlias type="shj.project.service.BoardVO" alias="board" />
+		<typeAlias type="shj.project.service.BuyBoardVO" alias="buyboard" />
+		<typeAlias type="shj.project.service.ReviewBoardVO" alias="reviewboard" />
+		<typeAlias type="shj.project.service.ReportBoardVO" alias="reportboard" />
+    </typeAliases>
+</configuration> 

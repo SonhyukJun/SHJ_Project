@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pid.sqlmap.mappers.Members_SQL">
+	<resultMap type="member" id="membersResult">
+		<result property="memberId" column="memberId" />
+		<result property="memberPassword" column="memberPassword" />		
+		<result property="memberName" column="memberName" />
+		<result property="memberTelNumber" column="memberTelNumber" />		
+		<result property="memberAddress" column="memberAddress" />		
+		<result property="authority" column="authority" />
+	</resultMap>
+	
+	<select id="memberId_check" resultType="int">
+		select count(*) from member where memberId=#{memberId}
+	</select>
+	
+	<insert id="signUp">
+		insert into member (memberId, memberPassword, memberName, memberTelNumber, memberAddress) 
+		values(#{memberId}, #{memberPassword}, #{memberName}, #{memberTelNumber}, #{memberAddress})
+	</insert>
+	
+	<select id="memberLogin" resultType="int">
+		select count(*) from member where memberId=#{memberId} and memberPassword=#{memberPassword}
+	</select>
+	
+	<select id="sessionId" resultType="String">
+		select memberId from member where memberId=#{memberId}
+	</select>
+	
+	<select id="sessionPassword" resultType="String">
+		select memberPassword from member where memberId=#{memberId}
+	</select>
+	
+	<select id="sessionName" resultType="String">
+		select memberName from member where memberId=#{memberId}
+	</select>
+	
+	<select id="sessionTelNumber" resultType="String">
+		select memberTelNumber from member where memberId=#{memberId}
+	</select>
+	
+	<select id="sessionAddress" resultType="String">
+		select memberAddress from member where memberId=#{memberId}
+	</select>
+	
+	<select id="sessionAuthority" resultType="String">
+		select Authority from member where memberId=#{memberId}
+	</select>
+	
+	<update id="modifyMemberPassword">
+		update member set memberPassword=#{memberPassword} where memberId=#{memberId}
+	</update>
+	
+	<update id="modifyMemberTelNumber">
+		update member set memberTelNumber=#{memberTelNumber} where memberId=#{memberId}
+	</update>
+	
+	<update id="modifyMemberAddress">
+		update member set memberAddress=#{memberAddress} where memberId=#{memberId}
+	</update>
+	
+	<select id="totalStars" resultType="double">
+		SELECT IFNULL(b.countingStars,0) AS countingStars FROM member a,
+		(SELECT round(SUM(countingStars)/COUNT(*),1) AS countingStars FROM reviewboard
+		WHERE sellId=#{memberId}) b
+		WHERE memberId=#{memberId}
+	</select>
+	
+	<select id="listMemberAdmin" resultMap="membersResult">
+		select * from member where memberId NOT in ('admin')
+		limit #{startIndex}, #{endIndex}		
+	</select>
+	
+	<select id="totalMemberAdmin" resultType="int">
+		select count(*) from member where memberId not in ('admin')
+	</select>
+	
+	<update id="reportMember">
+		update member set authority="N" where memberId=#{memberId}
+	</update>
+	
+	<update id="clearMember">
+		update member set authority="Y" where memberId=#{memberId}
+	</update>
+</mapper>

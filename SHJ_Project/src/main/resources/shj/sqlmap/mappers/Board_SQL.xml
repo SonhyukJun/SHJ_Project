@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shj.sqlmap.mappers.Board_SQL">
+	<resultMap type="board" id="boardResult">
+		<result property="boardNo" column="boardNo" />
+		<result property="title" column="title" />		
+		<result property="content" column="content" />
+		<result property="writeDate" column="writeDate" />
+		<result property="boardType" column="boardType" />
+		<result property="memberId" column="memberId" />
+		<result property="picture" column="picture" />
+		<result property="countingStars" column="countingStars" />
+		<result property="boardStatus" column="boardStatus" />
+		<result property="price" column="price" />
+	</resultMap>
+	
+	<insert id="insertBoard">
+		insert into board (title, content, writeDate, boardType, memberId, picture, boardStatus, price)
+		values(#{title}, #{content}, now(), #{boardType}, #{memberId}, #{picture}, #{boardStatus}, #{price})
+	</insert>
+	
+	<select id="listBoard" resultMap="boardResult">
+		select * from board where 1=1 order by boardNo desc limit #{startIndex}, #{endIndex}
+	</select>
+	
+	<select id="selectDetailTrade" resultMap="boardResult">
+		select * from board where boardNo=#{boardNo}
+	</select>
+	
+	<select id="totalBoard" resultType="int">
+		select count(*) from board
+	</select>
+	
+	<update id="modifyStatus">
+		update board set boardType="거래중", boardStatus="T" where boardNo=#{boardNo}
+	</update>
+	
+	<update id="tradeSend">
+		update board set boardType="인수대기중", boardStatus="W" where boardNo=#{boardNo}
+	</update>
+	
+	<update id="tradeReceive">
+		update board set boardType="거래완료", boardStatus="C" where boardNo=#{boardNo}
+	</update>
+	
+	<update id="tradeCancle">
+		update board set boardType="판매", boardStatus="S" where boardNo=#{boardNo}
+	</update>
+	
+	<delete id="tradeDelete">
+		delete from board where boardNo=#{boardNo}
+	</delete>
+	
+	<update id="modifyTradeInPicture">
+		update board set title=#{title}, content=#{content}, picture=#{picture}, price=#{price} where boardNo=#{boardNo}
+	</update>
+	
+	<update id="modifyTradeNoPicture">
+		update board set title=#{title}, content=#{content}, price=#{price} where boardNo=#{boardNo}
+	</update>
+	
+	<select id="listboardAdmin" resultMap="boardResult">
+		SELECT * FROM board WHERE 1=1 ORDER BY boardNo DESC LIMIT #{startIndex2}, #{endIndex2}
+	</select>
+	
+<!-- **************************************************************************************************************************** -->	
+	<resultMap type="buyboard" id="buyboardResult">
+		<result property="buyBoardNo" column="buyBoardNo" />
+		<result property="buyTitle" column="buyTitle" />		
+		<result property="buyMemberId" column="buyMemberId" />
+		<result property="buyPrice" column="buyPrice" />
+		<result property="buyId" column="buyId" />
+		<result property="buyStatus" column="buyStatus" />
+	</resultMap>	
+	
+	<insert id="insertBuyBoard">
+		insert into buyBoard values(#{buyBoardNo},#{buyTitle},#{buyMemberId},#{buyPrice},#{buyId}, "D")
+	</insert>
+	
+	<delete id="tradeCancleD">
+		delete from buyBoard where buyBoardNo=#{buyBoardNo}
+	</delete>
+	
+	<select id="reviewStatusCheck" resultType="int">
+		SELECT COUNT(*) FROM buyboard WHERE buyBoardNo = #{buyBoardNo} AND buyStatus="W" 
+	</select>
+	
+	<update id="tradeStatusW">
+		update buyboard set buyStatus="W" where buyBoardNo=#{buyBoardNo}
+	</update>
+	
+	<update id="tradeStatusE">
+		update buyboard set buyStatus="E" where buyBoardNo=#{buyBoardNo}
+	</update>
+	
+	<select id="listBuyBoardAdmin" resultMap="buyboardResult">
+		select * from buyboard where 1=1 limit #{startIndex}, #{endIndex}
+	</select>
+	
+	<select id="totalBuyBoard" resultType="int">
+		select count(*) buyboard
+	</select>
+<!-- **************************************************************************************************************************** -->
+	
+	<select id="myTradeSell" resultMap="boardResult, buyboardResult">
+		SELECT DISTINCT a.boardNo, a.title, a.content, a.price, a.writeDate, a.boardType, a.memberId, IFNULL(b.buyId, '없음') as buyId
+		FROM board a LEFT join buyboard b
+		on a.boardNo = b.buyboardNo
+		where memberId = #{memberId}
+		ORDER BY boardType='거래중' desc, boardNo DESC
+	</select>
+	
+	<select id="totalMyTrade" resultType="int">
+		select count(*) from board where memberId=#{memberId}
+	</select>
+	
+	<select id="myTradeBuy" resultMap="boardResult, buyboardResult">
+		SELECT DISTINCT a.boardNo, a.title, a.content, a.price, a.writeDate, a.boardType, a.memberId, IFNULL(b.buyId, '') AS buyId
+		FROM board a LEFT JOIN buyboard b
+		on a.boardNo = b.buyboardNo
+		where buyId = #{buyId}
+	</select>
+	
+	<select id="totalMyTradeBuy" resultType="int">
+		SELECT COUNT(*) FROM buyboard WHERE buyId=#{buyId}
+	</select>
+	
+<!-- **************************************************************************************************************************** -->	
+	<resultMap type="reviewboard" id="reviewboardResult">
+		<result property="buyBoardNo" column="buyBoardNo" />
+		<result property="sellId" column="sellId" />		
+		<result property="buyId" column="buyId" />
+		<result property="countingStars" column="countingStars" />
+		<result property="reviewContent" column="reviewContent" />
+	</resultMap>
+	
+	<insert id="reviewInsert">
+		insert into reviewboard values(#{buyBoardNo}, #{sellId}, #{buyId}, #{countingStars}, #{reviewContent})
+	</insert>
+	
+	<select id="reviewView" resultMap="reviewboardResult">
+		select * from reviewboard where sellId=#{sellId}
+		limit #{startIndex}, #{endIndex} 
+	</select>
+	
+	<select id="totalReviewBoard" resultType="int">
+		SELECT COUNT(*) FROM reviewboard WHERE sellId=#{sellId}
+	</select>
+	
+	<select id="listReviewBoardAdmin" resultMap="reviewboardResult">
+		select * from reviewboard where 1=1 
+		limit #{startIndex}, #{endIndex}
+	</select>
+	
+	<select id="totalReview" resultType="int">
+		select count(*) from reviewboard
+	</select>
+	
+<!-- **************************************************************************************************************************** -->	
+	<resultMap type="reportboard" id="reportboardResult">
+		<result property="reportBoardNo" column="reportBoardNo" />
+		<result property="reportMemberId" column="reportMemberId" />		
+		<result property="reportTitle" column="reportTitle" />
+		<result property="reportDate" column="reportDate" />
+		<result property="reportContent" column="reportContent" />
+		<result property="memberId" column="memberId" />
+		<result property="authority" column="Authority" />		
+	</resultMap>
+	
+	<insert id="reportInsert">
+		insert into reportboard values
+		(#{reportBoardNo},#{reportMemberId},#{reportTitle}, now(), #{reportContent}, #{memberId})
+	</insert>
+	
+	<select id="totalReport" resultType="int">
+		select count(*) from reportboard
+	</select>
+	
+	<select id="listReportBoardAdmin" resultMap="reportboardResult">
+		SELECT a.*, b.Authority FROM reportboard a, member b
+		WHERE a.reportMemberId = b.memberId
+		order by reportDate desc
+		limit #{startIndex}, #{endIndex}
+	</select>
+</mapper>
