@@ -87,6 +87,18 @@ public class MemberController {
 			return "loginCheck";
 		}
 	}
+	
+	@RequestMapping(value = "/modifyLogin.do", method = RequestMethod.GET)
+	public String modifyLoginForm(HttpSession session, HttpServletRequest request) {
+		String sessionId = "";
+		session = request.getSession();
+		sessionId = (String) session.getAttribute("SessionId");
+		if (sessionId != null) {
+			return "member/modifyLogin";
+		} else {
+			return "loginCheck";
+		}
+	}
 
 	@RequestMapping(value = "/modifyMember.do", method = RequestMethod.GET)
 	public String modifyMemberForm(HttpSession session, HttpServletRequest request) {

@@ -30,12 +30,12 @@ display: inline-block;
 		var width = 600;
 		var height = 600;
 		 
-		var left = (window.screen.width/2) - (width/2);
+		var left = (window.screen.width/2) - (width/2); 
 		var top = (window.screen.height / 4); 
 		
 		var windowStatus = 'width='+width+', height='+height+', left='+left+', top='+top+', scrollbars=yes, status=yes, resizable=yes, titlebar=yes';
 		
-		const url = "http://localhost:8080/SHJ_Project/modifyMemberPassword.do"; 
+		const url = "https://9099-58-224-53-148.ngrok.io/SHJ_Project/modifyMemberPassword.do"; 
 		window.open(url, "비밀번호 변경", windowStatus);		
 	}
 
@@ -48,7 +48,7 @@ display: inline-block;
 		
 		var windowStatus = 'width='+width+', height='+height+', left='+left+', top='+top+', scrollbars=yes, status=yes, resizable=yes, titlebar=yes';
 		
-		const url = "http://localhost:8080/SHJ_Project/modifyMemberTelNumber.do";
+		const url = "https://9099-58-224-53-148.ngrok.io/SHJ_Project/modifyMemberTelNumber.do";
 		window.open(url, "전화번호 변경", windowStatus);		 
 	}
 	
@@ -61,14 +61,14 @@ display: inline-block;
 		
 		var windowStatus = 'width='+width+', height='+height+', left='+left+', top='+top+', scrollbars=yes, status=yes, resizable=yes, titlebar=yes';
 		
-		const url = "http://localhost:8080/SHJ_Project/modifyMemberAddress.do"; 
+		const url = "https://9099-58-224-53-148.ngrok.io/SHJ_Project/modifyMemberAddress.do"; 
 		window.open(url, "닉네임 변경", windowStatus);		
 	}
 	
-	function save() {
+/* 	function save() {
 		alert("변경내용이 저장되었습니다.")
 		location="myPage.do";
-	}
+	} */
 </script>
 <title>SHJ_ModifyMemberForm</title>
 </head>
@@ -102,7 +102,7 @@ display: inline-block;
 				</tr>
 			</table>
 			<input type="button" class="btn btn-dark len" onclick="location.href='main.do'" value="메인으로"/>
-			<input type="button" class="btn btn-dark len" onclick="save()" value="변경내용저장"/>
+			<!-- <input type="button" class="btn btn-dark len" onclick="save()" value="변경내용저장"/> -->
 		</div>
 	</div>
 </section>

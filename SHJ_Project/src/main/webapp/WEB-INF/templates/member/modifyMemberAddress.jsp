@@ -68,7 +68,7 @@ display: flex;
 				success: function(data) {
 					if(data == "ok"){
 						alert("수정성공")
-						opener.parent.location="http://localhost:8080/SHJ_Project/modifyMember.do";
+						opener.parent.location="https://9099-58-224-53-148.ngrok.io/SHJ_Project/modifyMember.do";
 						self.close();
 					}
 				}
@@ -78,7 +78,7 @@ display: flex;
 	}
 
 	function cancel() {
-		opener.parent.location="http://localhost:8080/SHJ_Project/modifyMember.do";
+		opener.parent.location="https://9099-58-224-53-148.ngrok.io/SHJ_Project/modifyMember.do";
 		self.close();
 	}
 

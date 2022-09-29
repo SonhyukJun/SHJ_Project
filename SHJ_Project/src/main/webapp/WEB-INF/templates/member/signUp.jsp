@@ -75,18 +75,35 @@ display: flex;
 		}
 	}
 	
+	$(function(){
+    	$('#memberPassword').keyup(function(){
+	      	$('#pass_check').html('');
+    	});
+   		$('#passwordCheck').keyup(function(){
+        	if($('#memberPassword').val() != $('#passwordCheck').val()){
+		    	$('#pass_check').html('비밀번호 일치하지 않음<br>');
+	        	$('#pass_check').attr('color', '#FF0000');	
+	        } else{
+	          	$('#pass_check').html('비밀번호 일치함<br>');
+    	      	$('#pass_check').attr('color', '#199894b3');    	      
+	        }
+    	});
+	});
+	
 	function signUp() {
 		var id = $('#memberId').val();
 		var pass = $('#memberPassword').val();
+		var passCheck = $('#passwordCheck').val();
 		var name = $('#memberName').val();
 		var tel = $('#memberFirstNumber').val() + $('#memberMiddleNumber').val() + $('#memberLastNumber').val();
 		var address = $('#memberAddress').val();
+		
 		var checkTel = /^[0-9]{11}$/;
-		if(!checkTel.test(tel)){
+/* 		if(!checkTel.test(tel)){
 			alert("전화번호 형식이 맞지 않습니다.")
 			return false;
 		}
-		
+		 */
 		if(id==""){
 			alert("아이디를 입력해 주세요.")
 		} else if(pass==""){
@@ -97,12 +114,14 @@ display: flex;
 			alert("전화번호를 입력해 주세요.")
 		} else if($('#memberPassword').val().length < 6) {
 			alert("비밀번호는 6자리 이상 입력해 주세요.")
+		} else if(pass != passCheck){
+			alert("비밀번호가 일치하지 않습니다.")
 		} else if($('#memberMiddleNumber').val()== "" || $('#memberLastNumber').val() == ""){
 			alert("전화번호에 빈칸이 존재합니다.\n확인해주세요.")
 		} else if ($('#memberMiddleNumber').val().length < 4 || $('#memberLastNumber').val().length < 4){
 			alert("전화번호 형식이 맞지않습니다.")
 		} else if (!checkTel.test(tel)) {
-			alert("전화번호 형식이 맞지 않습니다.")
+			alert("전화번호는 숫자만 입력해주세요.")
 			return false;
 		} else if(address==""){
 			alert("주소를 입력해 주세요.")
@@ -148,11 +167,16 @@ display: flex;
 			<input type="button" class="btn btn-dark" onclick="memberId_check()" value="ID중복확인">
 			<div class="container mb-3 mt-3">
 				<label for="memberPassword" class="lab">비밀번호</label>
-				<input type="password" class="form-control" id="memberPassword" placeholder="아이디를 입력하세요" name="memberPassword" autocomplete="off">
+				<input type="password" class="form-control" id="memberPassword" placeholder="비밀번호를 입력하세요" name="memberPassword" autocomplete="off">
 			</div>
 			<div class="container mb-3 mt-3">
+				<label for="memberPassword" class="lab">비밀번호 확인</label>
+				<input type="password" class="form-control" id="passwordCheck" placeholder="비밀번호를 입력하세요" name="memberPassword" autocomplete="off">
+			</div>
+			<font id="pass_check" size="2"></font>
+			<div class="container mb-3 mt-3">
 				<label for="memberName" class="lab">이름</label>
-				<input type="text" class="form-control" id="memberName" placeholder="아이디를 입력하세요" name="memberName" autocomplete="off">
+				<input type="text" class="form-control" id="memberName" placeholder="이름을 입력하세요" name="memberName" autocomplete="off">
 			</div>
 			<div class="container mb-3 mt-3">
 				<label for="memberFirstNumber" class="lab">전화번호</label>
@@ -170,7 +194,7 @@ display: flex;
 			</div>
 			<div class="container mb-3 mt-3">
 				<label for="memberAddress" class="lab">주소</label>
-				<input type="text" class="form-control" id="memberAddress" placeholder="아이디를 입력하세요" name="memberAddress" autocomplete="off">
+				<input type="text" class="form-control" id="memberAddress" placeholder="주소를 입력하세요" name="memberAddress" autocomplete="off">
 			</div>
 			<input type="button" class="btn btn-dark" onclick="location.href='login.do'" value="뒤로가기">
 			<input type="button" class="btn btn-dark" onclick="signUp()" value="회원가입">

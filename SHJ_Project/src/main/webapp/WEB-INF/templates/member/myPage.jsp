@@ -30,24 +30,13 @@ display: inline-block;
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
-	function modifyMember() {
-		var pass = $('#sessionPassword').val();
-		var checkpass = prompt('비밀번호확인', '');
 
-		if(pass == checkpass) {
-			alert("확인되었습니다.");
-			location="modifyMember.do"
-		} else {
-			alert("비밀번호가 틀렸습니다.")
-		}
-	}
 </script>
 <title>SHJ_MyPageForm</title>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
 <section>
-	<input type="hidden" id="sessionPassword" value="${SessionPassword}"/>
 	<div class="container wrap">
 		<div class="text-center">
 			<h2 class="section-heading">마이페이지</h2>
@@ -71,7 +60,7 @@ display: inline-block;
 				</tr>
 			</table>
 			<input type="button" class="btn btn-dark len" onclick="location.href='myTrade.do'" value="거래내역"/>
-			<input type="button" class="btn btn-dark len" onclick="modifyMember()" value="개인정보수정"/>
+			<input type="button" class="btn btn-dark len" onclick="location.href='modifyLogin.do'" value="개인정보수정"/>
 		</div>
 	</div>
 </section>
