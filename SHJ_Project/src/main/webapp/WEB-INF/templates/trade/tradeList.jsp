@@ -46,7 +46,6 @@ display: inline-block;
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
-<resources mapping="/image/**" locatio="file:///c:/test/"/>
 <section>
 <div class="container">	
 	<div class="text-center">

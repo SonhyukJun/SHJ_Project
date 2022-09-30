@@ -40,6 +40,8 @@
 				if(data == "ok") {
 					alert("구매 예약 완료")
 					location="tradeList.do"
+				} else if(data == "check"){
+					alert("현재 사용 정지중인 판매자입니다.")
 				} else if(data == "no") {
 					alert("로그인이 필요한 서비스입니다.")
 					location="login.do"
@@ -53,7 +55,7 @@
 		$(document).on("click","img",function(){
 			var path = $(this).attr('src')
 			showImage(path);
-		});//end click event
+		});
 		
 		function showImage(fileCallPath){
 		    
@@ -63,15 +65,36 @@
 		    .html("<img src='"+fileCallPath+"' >")
 		    .animate({width:'100%', height: '100%'}, 1000);
 		    
-		  }//end fileCallPath
+		  }
 		  
 		$(".bigPictureWrapper").on("click", function(e){
 		    $(".bigPicture").animate({width:'0%', height: '0%'}, 1000);
 		    setTimeout(function(){
 		      $('.bigPictureWrapper').hide();
 		    }, 1000);
-		  });//end bigWrapperClick event
+		  });
 	});
+	
+	function tradeDelete() {
+		var no = $('#boardNo').val();
+		
+		$.ajax({
+			url: 'tradeDeleteAdmin.do',
+			type: 'POST',
+			data: {
+				boardNo: no
+			},
+			datatype: 'JSON',
+			success: function(data) {
+				if(data == "ok") {
+					alert("게시글 삭제")
+					location="tradeList.do"
+				} else if(data == "no") {
+					alert("게시글 삭제 실패")					
+				} 
+			}
+		})
+	}
  	
 </script>
 <style>
@@ -210,11 +233,16 @@ width:600px;
     	<c:if test="${sessionId ne selectDetailTrade.memberId}">
     		<c:if test="${selectDetailTrade.boardType eq '판매' }">
     			<div class="pull-right">
-	    			<input type="button" class="btn btn-dark"  value="구매 예약" onclick="buy()" />
+	    			<input type="button" class="btn btn-dark"  value="구매 예약" onclick="buy()" />   	
 	    		</div>
-    		</c:if>	    	
-    	</c:if>    	
-	</div>
+    		</c:if>
+    	</c:if>
+    	<div class="pull-right">
+   			<c:if test="${SessionAuthority eq 'Admin'}">
+	    		<input type="button" class="btn btn-danger"  value="삭제" onclick="tradeDelete()" />
+	    	</c:if>	 
+	    </div>
+    </div>
 </div>
 </section>
 <jsp:include page="../footer.jsp"></jsp:include>

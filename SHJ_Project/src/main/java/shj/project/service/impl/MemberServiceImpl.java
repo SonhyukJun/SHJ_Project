@@ -111,4 +111,10 @@ public class MemberServiceImpl implements MemberService {
 		dao.clearMember(memberId);
 	}
 
+	@Override
+	public String memberAuthorityCheck(String memberId) throws Exception {
+		String result = dao.memberAuthorityCheck(memberId);
+		return result;
+	}
+
 }

@@ -75,11 +75,11 @@ display: inline-block;
 				<td>
 				<div class="pull-left">
 					<select id="itemType" name="itemType" class="form-control input-sm text-center" >		
-						<option value="가전제품" selected="${board.itemType=='가전제품'}">가전제품</option>
-						<option value="가구" selected="${board.itemType=='가구'}">가구</option>
-						<option value="전자제품" selected="${board.itemType=='전자제품'}">전자제품</option>
-						<option value="식품" selected="${board.itemType=='식품'}">식품</option>
-						<option value="기타" selected="${board.itemType=='기타'}">기타</option>
+						<option value="가전제품" selected="${selectDetailTrade.itemType=='가전제품'}">가전제품</option>
+						<option value="가구" selected="${selectDetailTrade.itemType=='가구'}">가구</option>
+						<option value="전자제품" selected="${selectDetailTrade.itemType=='전자제품'}">전자제품</option>
+						<option value="식품" selected="${selectDetailTrade.itemType=='식품'}">식품</option>
+						<option value="기타" selected="${selectDetailTrade.itemType=='기타'}">기타</option>
 					</select>
 				</div>
 				</td>

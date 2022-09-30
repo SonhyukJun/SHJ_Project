@@ -106,4 +106,10 @@ public class MemberDAOMybatis extends EgovAbstractMapper implements MemberDAO {
 		update("clearMember", memberId);
 	}
 
+	@Override
+	public String memberAuthorityCheck(String memberId) throws Exception {
+		String result = selectOne("memberAuthorityCheck", memberId);
+		return result;
+	}
+
 }

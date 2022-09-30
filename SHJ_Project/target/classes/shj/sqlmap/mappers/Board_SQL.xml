@@ -65,11 +65,11 @@
 	</delete>
 	
 	<update id="modifyTradeInPicture">
-		update board set title=#{title}, content=#{content}, picture=#{picture}, itemType=${itemType}, price=#{price} where boardNo=#{boardNo}
+		update board set title=#{title}, content=#{content}, picture=#{picture}, itemType=#{itemType}, price=#{price} where boardNo=#{boardNo}
 	</update>
 	
 	<update id="modifyTradeNoPicture">
-		update board set title=#{title}, content=#{content}, itemType=${itemType}, price=#{price} where boardNo=#{boardNo}
+		update board set title=#{title}, content=#{content}, itemType=#{itemType}, price=#{price} where boardNo=#{boardNo}
 	</update>
 	
 	<select id="listboardAdmin" resultMap="boardResult">

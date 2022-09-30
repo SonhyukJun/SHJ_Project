@@ -343,5 +343,23 @@ public class AdminController {
 		data = "ok";
 		return data;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/tradeDeleteAdmin.do", method = RequestMethod.POST)
+	public String tradeDeleteAdmin(int boardNo,
+			HttpSession session, HttpServletRequest request) throws Exception {
+		String data = "";
+		String sessionAuthority = "";
+		session = request.getSession();
+		sessionAuthority = (String) session.getAttribute("SessionAuthority");
+		if(sessionAuthority.equals("Admin")) {
+			serviceB.tradeDelete(boardNo);
+			data = "ok";
+		} else {
+			data = "no";
+		}
+		return data;
+	}
+	
 
 }

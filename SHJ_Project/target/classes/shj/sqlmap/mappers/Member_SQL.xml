@@ -91,4 +91,8 @@
 	<update id="clearMember">
 		update member set authority="Y" where memberId=#{memberId}
 	</update>
+	
+	<select id="memberAuthorityCheck" resultType="String">
+		SELECT authority FROM member WHERE memberId=#{memberId}
+	</select>
 </mapper>

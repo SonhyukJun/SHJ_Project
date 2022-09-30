@@ -37,4 +37,6 @@ public interface MemberDAO {
 	void reportMember(String memberId) throws Exception;
 	
 	void clearMember(String memberId) throws Exception;
+	
+	String memberAuthorityCheck(String memberId) throws Exception;
 }

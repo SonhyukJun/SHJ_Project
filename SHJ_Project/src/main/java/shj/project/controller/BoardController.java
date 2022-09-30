@@ -229,16 +229,20 @@ public class BoardController {
 	@ResponseBody
 	@RequestMapping(value = "/buyBoard.do", method = RequestMethod.POST)
 	public String buyBoardForm(HttpSession session, HttpServletRequest request, BuyBoardVO buyBoardVo,
-			@RequestParam(name = "buyBoardNo") int buyBoardNo) throws Exception {
+			@RequestParam(name = "buyBoardNo") int buyBoardNo,
+			@RequestParam(name = "buyMemberId") String buyMemberId) throws Exception {		
+		String check = serviceM.memberAuthorityCheck(buyMemberId);
 		String sessionId = "";
 		session = request.getSession();
 		sessionId = (String) session.getAttribute("SessionId");
 		String data = "";
-		if (sessionId != null) {
+		if (sessionId != null && check.equals("Y")) {
 			service.insertBuyboard(buyBoardVo);
 			int boardNo = buyBoardNo;
 			service.modifyStatus(boardNo);
 			data = "ok";
+		} else if (sessionId != null && check.equals("N")) {
+			data = "check";
 		} else {
 			data = "no";
 		}
