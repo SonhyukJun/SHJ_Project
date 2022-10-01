@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="UTF-8">
 <head>
@@ -189,7 +190,7 @@ width:600px;
 			</tr>
 			<tr>
 				<th style="padding:13px 0 0 15px" width="100">가격</th>
-				<td align="left"><input id="price" name="price" readonly="readonly" style="background: white;" class="col-md-1 form-control input-sm" type="text" size="52" value="${selectDetailTrade.price }"/></td>
+				<td align="left" style="height: 50px"><fmt:formatNumber value="${selectDetailTrade.price }" pattern="#,###원"/></td>
 			</tr>
 			<tr>
 				<th style="padding:13px 0 0 15px" width="100">작성자</th>

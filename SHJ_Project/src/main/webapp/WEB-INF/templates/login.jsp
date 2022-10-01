@@ -65,6 +65,7 @@ display: flex;
 			})
 		}
 	}
+	
 </script>
 <title>SHJ-JunGo</title>
 </head>

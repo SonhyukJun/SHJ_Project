@@ -99,7 +99,7 @@
                             	<p class="blink" style="color: #FF1493">판매중</p>
                                 <div class="portfolio-caption-heading">${lately1.title }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately1.content }</div>
-                                <div class="portfolio-caption-subheading text-muted">${lately1.price }원</div>
+                                <div class="portfolio-caption-subheading text-muted"><fmt:formatNumber value="${lately1.price }" pattern="#,###원"/></div>
                             </div>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
                             	<p class="blink" style="color: #FF1493">판매중</p>
                                 <div class="portfolio-caption-heading">${lately2.title }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately2.content }</div>
-                                <div class="portfolio-caption-subheading text-muted">${lately2.price }원</div>
+                                <div class="portfolio-caption-subheading text-muted"><fmt:formatNumber value="${lately2.price }" pattern="#,###원"/></div>
                             </div>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                             	<p class="blink" style="color: #FF1493">판매중</p>
                                 <div class="portfolio-caption-heading">${lately3.title }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately3.content }</div>
-                                <div class="portfolio-caption-subheading text-muted">${lately3.price }원</div>
+                                <div class="portfolio-caption-subheading text-muted"><fmt:formatNumber value="${lately3.price }" pattern="#,###원"/></div>
                             </div>
                         </div>
                     </div>
@@ -153,7 +153,7 @@
                             	<p class="blink" style="color: #FF1493">판매중</p>
                                 <div class="portfolio-caption-heading">${lately4.title }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately4.content }</div>
-                                <div class="portfolio-caption-subheading text-muted">${lately4.price }원</div>
+                                <div class="portfolio-caption-subheading text-muted"><fmt:formatNumber value="${lately4.price }" pattern="#,###원"/></div>
                             </div>
                         </div>
                     </div>
@@ -171,7 +171,7 @@
                             	<p class="blink" style="color: #FF1493">판매중</p>
                                 <div class="portfolio-caption-heading">${lately5.title }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately5.content }</div>
-                                <div class="portfolio-caption-subheading text-muted">${lately5.price }원</div>
+                                <div class="portfolio-caption-subheading text-muted"><fmt:formatNumber value="${lately5.price }" pattern="#,###원"/></div>
                             </div>
                         </div>
                     </div>
@@ -189,7 +189,7 @@
                             	<p class="blink" style="color: #FF1493">판매중</p>
                                 <div class="portfolio-caption-heading">${lately6.title }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately6.content }</div>
-                                <div class="portfolio-caption-subheading text-muted">${lately6.price }원</div>
+                                <div class="portfolio-caption-subheading text-muted"><fmt:formatNumber value="${lately6.price }" pattern="#,###원"/></div>
                             </div>
                         </div>
                     </div>
@@ -220,7 +220,7 @@
                                         </li>
                                         <li>
                                             <strong>가격:</strong>
-                                             ${lately1.price }원
+                                            <fmt:formatNumber value="${lately1.price }" pattern="#,###원"/>
                                         </li>
                                         <li>
                                             <strong>작성일자:</strong>
@@ -262,7 +262,7 @@
                                         </li>
                                         <li>
                                             <strong>가격:</strong>
-                                             ${lately2.price }원
+                                            <fmt:formatNumber value="${lately2.price }" pattern="#,###원"/>
                                         </li>
                                         <li>
                                             <strong>작성일자:</strong>
@@ -303,7 +303,7 @@
                                         </li>
                                         <li>
                                             <strong>가격:</strong>
-                                             ${lately3.price }원
+                                            <fmt:formatNumber value="${lately3.price }" pattern="#,###원"/>
                                         </li>
                                         <li>
                                             <strong>작성일자:</strong>
@@ -344,7 +344,7 @@
                                         </li>
                                         <li>
                                             <strong>가격:</strong>
-                                             ${lately4.price }원
+                                            <fmt:formatNumber value="${lately4.price }" pattern="#,###원"/>
                                         </li>
                                         <li>
                                             <strong>작성일자:</strong>
@@ -385,7 +385,7 @@
                                         </li>
                                         <li>
                                             <strong>가격:</strong>
-                                             ${lately5.price }원
+                                            <fmt:formatNumber value="${lately5.price }" pattern="#,###원"/>
                                         </li>
                                         <li>
                                             <strong>작성일자:</strong>
@@ -426,7 +426,7 @@
                                         </li>
                                         <li>
                                             <strong>가격:</strong>
-                                             ${lately6.price }원
+                                            <fmt:formatNumber value="${lately6.price }" pattern="#,###원"/>
                                         </li>
                                         <li>
                                             <strong>작성일자:</strong>

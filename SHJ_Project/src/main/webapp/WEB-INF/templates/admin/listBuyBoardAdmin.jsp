@@ -83,7 +83,7 @@ display: inline-block;
 							</c:choose>
 							</td>						
 							<td>${listBuyBoardAdmin.buyMemberId}</td>							
-							<td>${listBuyBoardAdmin.buyPrice}</td>
+							<td><fmt:formatNumber value="${listBuyBoardAdmin.buyPrice}" pattern="#,###원"/></td>
 							<td>${listBuyBoardAdmin.buyId}</td>						
 							<td>${listBuyBoardAdmin.buyStatus}</td>										
 						</tr>

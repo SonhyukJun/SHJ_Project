@@ -197,7 +197,7 @@ display: inline-block;
 					<tr>
 						<td>${myTradeSell.boardNo}</td>
 						<td>${myTradeSell.title}</td>						
-						<td>${myTradeSell.price}</td>
+						<td><fmt:formatNumber value="${myTradeSell.price}" pattern="#,###원"/></td>
 						<td><fmt:formatDate value="${myTradeSell.writeDate}" pattern="yyyy-MM-dd HH:mm"/></td>
 						<td>${myTradeSell.boardType}</td>
 						<td>${myTradeSell.buyId}</td>
@@ -249,7 +249,7 @@ display: inline-block;
 					<tr>
 						<td><input type="hidden" id="buyBoardNo" value="${myTradeBuy.boardNo }" /> ${myTradeBuy.boardNo}</td>
 						<td>${myTradeBuy.title}</td>
-						<td>${myTradeBuy.price}</td>
+						<td><fmt:formatNumber value="${myTradeBuy.price}" pattern="#,###원"/></td>
 						<td><fmt:formatDate value="${myTradeBuy.writeDate}" pattern="yyyy-MM-dd HH:mm"/></td>
 						<td>${myTradeBuy.boardType}</td>
 						<td><input type="hidden" id="buyMemberId" value="${myTradeBuy.memberId }" />${myTradeBuy.memberId}</td>

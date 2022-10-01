@@ -1,6 +1,7 @@
 package shj;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -29,8 +30,15 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
-	public String loginForm() {
-		return "login";
+	public String loginForm(HttpSession session, HttpServletRequest request) {
+		String sessionId = "";
+		session = request.getSession();
+		sessionId = (String) session.getAttribute("SessionId");
+		if (sessionId != null) {
+			return "main";
+		} else {
+			return "login";
+		}
 	}
 
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)

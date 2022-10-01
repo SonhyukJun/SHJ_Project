@@ -80,7 +80,7 @@ display: inline-block;
 						</tr>
 						<tr>
 							<th>가격</th>
-							<td style="width: 100">${board.price}</td>
+							<td style="width: 100"><fmt:formatNumber value="${board.price}" pattern="#,###원"/></td>
 							<th>작성자</th>
 							<td style="width: 100">${board.memberId}</td>
 						</tr>

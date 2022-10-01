@@ -90,7 +90,7 @@ display: inline-block;
 							<td>
 							<fmt:formatDate value="${listBoardAdmin.writeDate}" pattern="yyyy년MM월dd일 HH:mm"/>
 							</td>							
-							<td>${listBoardAdmin.price}</td>
+							<td><fmt:formatNumber value="${listBoardAdmin.price}" pattern="#,###원"/></td>
 							<td>${listBoardAdmin.boardType}</td>
 							<td>${listBoardAdmin.memberId}</td>
 							<td>${listBoardAdmin.boardStatus}</td>										
