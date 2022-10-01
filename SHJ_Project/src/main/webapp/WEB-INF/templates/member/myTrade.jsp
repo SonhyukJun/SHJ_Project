@@ -156,7 +156,7 @@ display: inline-block;
 	float: left !important
 }
 </style>
-<title>SHJ_MyTrade</title>
+<title>SHJ-JunGo</title>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>

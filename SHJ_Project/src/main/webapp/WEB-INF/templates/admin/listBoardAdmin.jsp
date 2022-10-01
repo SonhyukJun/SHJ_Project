@@ -44,8 +44,11 @@ display: inline-block;
 .stars {
 	color: #FFD700;
 }
+.hov:hover{
+	background: #a0a0a0;
+}
 </style>
-<title>SHJ-TradeInsert</title>
+<title>SHJ-JunGo</title>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
@@ -69,7 +72,8 @@ display: inline-block;
 					</tr>
 				<tbody>
 					<c:forEach var="listBoardAdmin" items="${listBoardAdmin }">
-						<tr>
+						<tr style="cursor: pointer;" class="hov"
+						onclick="location.href='selectDetailTrade.do?boardNo=${listBoardAdmin.boardNo}&memberId=${listBoardAdmin.memberId}'">
 							<td>${listBoardAdmin.boardNo}</td>
 							<td>
 							<c:set var="title" value="${listBoardAdmin.title}"/>

@@ -141,7 +141,7 @@ align-items: center;
 width:600px;
 }
 </style>
-<title>SHJ-SelectDetailTrade</title>
+<title>SHJ-JunGo</title>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
@@ -238,7 +238,7 @@ width:600px;
     		</c:if>
     	</c:if>
     	<div class="pull-right">
-   			<c:if test="${SessionAuthority eq 'Admin'}">
+   			<c:if test="${selectDetailTrade.boardType eq '판매' && SessionAuthority eq 'Admin'}">
 	    		<input type="button" class="btn btn-danger"  value="삭제" onclick="tradeDelete()" />
 	    	</c:if>	 
 	    </div>

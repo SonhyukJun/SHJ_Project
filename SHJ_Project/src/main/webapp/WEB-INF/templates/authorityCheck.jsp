@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SHJ-JunGo</title>
 <script>
 	alert("접근 권한이 없습니다.")
 	location="main.do"

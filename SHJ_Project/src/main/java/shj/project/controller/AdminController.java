@@ -34,18 +34,6 @@ public class AdminController {
 	@Resource(name = "boardService")
 	private BoardService serviceB;
 
-	@RequestMapping(value = "/adminPage.do", method = RequestMethod.GET)
-	public String adminPageForm(HttpSession session, HttpServletRequest request) {
-		String sessionAuthority = "";
-		session = request.getSession();
-		sessionAuthority = (String) session.getAttribute("SessionAuthority");
-		if (sessionAuthority.equals("Admin")) {
-			return "admin/adminPage";
-		} else {
-			return "authorityCheck";
-		}
-	}
-
 	@RequestMapping(value = "/listMemberAdmin.do", method = RequestMethod.GET)
 	public String listMemberAdmin(HttpSession session, HttpServletRequest request, Model model, MemberVO memberVo)
 			throws Exception {
@@ -360,6 +348,5 @@ public class AdminController {
 		}
 		return data;
 	}
-	
 
 }

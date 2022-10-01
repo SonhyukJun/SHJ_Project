@@ -29,6 +29,14 @@ display: flex;
 <script src="resource/js/scripts.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
+
+	function moveFocus(){
+		if(event.keyCode == 13){
+			memberLogin();
+			return;
+		}
+	}
+	
 	function memberLogin() {
 		var id = $('#memberId').val();
 		var pass = $('#memberPassword').val();
@@ -55,7 +63,7 @@ display: flex;
 		}
 	}
 </script>
-<title>SHJ_LoginForm</title>
+<title>SHJ-JunGo</title>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
@@ -68,7 +76,8 @@ display: flex;
 					<input type="hidden" id="memberId" name="memberId" value="${SessionId}">
 					<div class="container mb-3">
 						<label for="memberPassword" class="lab">비밀번호</label>
-						<input type="password" class="form-control" id="memberPassword" placeholder="비밀번호를 입력하세요" name="memberPassword" autocomplete="off">
+						<input type="password" class="form-control" id="memberPassword" placeholder="비밀번호를 입력하세요" name="memberPassword" autocomplete="off"
+						onkeydown="moveFocus()"/>
 					</div>
 					<input type="button" class="btn btn-dark" onclick="memberLogin()" value="로그인"/>
 					

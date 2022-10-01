@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SHJ-JunGo</title>
 <script>
 	alert("로그인이 필요한 서비스입니다.")
 	location="login.do"

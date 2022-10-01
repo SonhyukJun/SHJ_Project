@@ -35,7 +35,7 @@ display: inline-block;
 		
 		var windowStatus = 'width='+width+', height='+height+', left='+left+', top='+top+', scrollbars=yes, status=yes, resizable=yes, titlebar=yes';
 		
-		const url = "https://9099-58-224-53-148.ngrok.io/SHJ_Project/modifyMemberPassword.do"; 
+		const url = "https://5ac3-58-224-53-148.ngrok.io/SHJ_Project/modifyMemberPassword.do"; 
 		window.open(url, "비밀번호 변경", windowStatus);		
 	}
 
@@ -48,7 +48,7 @@ display: inline-block;
 		
 		var windowStatus = 'width='+width+', height='+height+', left='+left+', top='+top+', scrollbars=yes, status=yes, resizable=yes, titlebar=yes';
 		
-		const url = "https://9099-58-224-53-148.ngrok.io/SHJ_Project/modifyMemberTelNumber.do";
+		const url = "https://5ac3-58-224-53-148.ngrok.io/SHJ_Project/modifyMemberTelNumber.do";
 		window.open(url, "전화번호 변경", windowStatus);		 
 	}
 	
@@ -61,7 +61,7 @@ display: inline-block;
 		
 		var windowStatus = 'width='+width+', height='+height+', left='+left+', top='+top+', scrollbars=yes, status=yes, resizable=yes, titlebar=yes';
 		
-		const url = "https://9099-58-224-53-148.ngrok.io/SHJ_Project/modifyMemberAddress.do"; 
+		const url = "https://5ac3-58-224-53-148.ngrok.io/SHJ_Project/modifyMemberAddress.do"; 
 		window.open(url, "닉네임 변경", windowStatus);		
 	}
 	
@@ -70,7 +70,7 @@ display: inline-block;
 		location="myPage.do";
 	} */
 </script>
-<title>SHJ_ModifyMemberForm</title>
+<title>SHJ-JunGo</title>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>

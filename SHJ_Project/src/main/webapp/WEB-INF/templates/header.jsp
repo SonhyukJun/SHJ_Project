@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>SHJ-Shop</title>
+<title>SHJ-JunGo</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="resource/assets/favicon.ico" />
 <!-- Font Awesome icons (free version)-->
@@ -40,7 +40,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="main.do">홈</a></li>
+                        <li class="nav-item"><a class="nav-link" href="main.do#page-top">홈</a></li>
                         <li class="nav-item"><a class="nav-link" href="main.do#services">안내</a></li>
                         <li class="nav-item"><a class="nav-link" href="main.do#portfolio">최근 글 보기</a></li>
                         <li class="nav-item"><a class="nav-link" href="tradeList.do">거래하러가기</a></li>

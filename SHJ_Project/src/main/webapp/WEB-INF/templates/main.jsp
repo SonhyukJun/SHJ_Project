@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>SHJ-Shop</title>
+<title>SHJ-JunGo</title>
 <link rel="icon" type="image/x-icon" href="resource/assets/favicon.ico" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
@@ -19,13 +19,25 @@
 <script src="resource/js/scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<style>
+@keyframes blink-effect {
+  50% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blink-effect 1s step-end infinite;
+}
+</style>
 </head>
     <body id="page-top">
         <jsp:include page="header.jsp"></jsp:include>
         <header class="masthead">
-            <div class="container">
+            <div class="container">            	
                 <div class="masthead-subheading">저희 JunGo에 방문해주셔서 감사합니다.</div>
-                <div class="masthead-heading">Safety JunGo</div>
+                <div class="masthead-heading animate__animated animate__flipInX">Safety JunGo</div>
                 <a class="btn btn-primary btn-xl text-uppercase" href="#services">안내</a>
             </div>
         </header>
@@ -84,6 +96,7 @@
                                 <img class="img-fluid" src="${pageContext.request.contextPath}/resource/upload/${lately1.picture}" style="width: 400px; height: 300px;" alt="..." />
                             </a>
                             <div class="portfolio-caption">
+                            	<p class="blink" style="color: #FF1493">판매중</p>
                                 <div class="portfolio-caption-heading">${lately1.title }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately1.content }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately1.price }원</div>
@@ -101,6 +114,7 @@
                                  <img class="img-fluid" src="${pageContext.request.contextPath}/resource/upload/${lately2.picture}" style="width: 400px; height: 300px;" alt="..." />
                             </a>
                             <div class="portfolio-caption">
+                            	<p class="blink" style="color: #FF1493">판매중</p>
                                 <div class="portfolio-caption-heading">${lately2.title }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately2.content }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately2.price }원</div>
@@ -118,6 +132,7 @@
                                <img class="img-fluid" src="${pageContext.request.contextPath}/resource/upload/${lately3.picture}" style="width: 400px; height: 300px;" alt="..." />
                             </a>
                             <div class="portfolio-caption">
+                            	<p class="blink" style="color: #FF1493">판매중</p>
                                 <div class="portfolio-caption-heading">${lately3.title }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately3.content }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately3.price }원</div>
@@ -135,6 +150,7 @@
                                 <img class="img-fluid" src="${pageContext.request.contextPath}/resource/upload/${lately4.picture}" style="width: 400px; height: 300px;" alt="..." />
                             </a>
                             <div class="portfolio-caption">
+                            	<p class="blink" style="color: #FF1493">판매중</p>
                                 <div class="portfolio-caption-heading">${lately4.title }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately4.content }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately4.price }원</div>
@@ -152,6 +168,7 @@
                                 <img class="img-fluid" src="${pageContext.request.contextPath}/resource/upload/${lately5.picture}" style="width: 400px; height: 300px;" alt="..." />
                             </a>
                             <div class="portfolio-caption">
+                            	<p class="blink" style="color: #FF1493">판매중</p>
                                 <div class="portfolio-caption-heading">${lately5.title }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately5.content }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately5.price }원</div>
@@ -169,6 +186,7 @@
                                 <img class="img-fluid" src="${pageContext.request.contextPath}/resource/upload/${lately6.picture}" style="width: 400px; height: 300px;" alt="..." />
                             </a>
                             <div class="portfolio-caption">
+                            	<p class="blink" style="color: #FF1493">판매중</p>
                                 <div class="portfolio-caption-heading">${lately6.title }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately6.content }</div>
                                 <div class="portfolio-caption-subheading text-muted">${lately6.price }원</div>
@@ -431,14 +449,5 @@
                 </div>
             </div>
         </div>
-        <!-- Bootstrap core JS-->
-   
-        <!-- Core theme JS-->
-      
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-
     </body>
 </html>

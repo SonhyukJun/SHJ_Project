@@ -88,7 +88,7 @@ display: inline-block;
 	color: #FFD700;
 }
 </style>
-<title>SHJ-TradeInsert</title>
+<title>SHJ-JunGo</title>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>

@@ -32,7 +32,7 @@ display: inline-block;
 <script>
 
 </script>
-<title>SHJ_MyPageForm</title>
+<title>SHJ-JunGo</title>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
