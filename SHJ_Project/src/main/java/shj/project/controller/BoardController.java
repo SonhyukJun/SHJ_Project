@@ -47,7 +47,7 @@ public class BoardController {
 			if (sessionAuthority.equals("Y") || sessionAuthority.equals("Admin")) {
 				return "trade/tradeInsert";
 			} else {
-				return "authorityCheck";
+				return "reportCheck";
 			}
 		} else {
 			return "loginCheck";

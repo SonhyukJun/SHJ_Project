@@ -160,7 +160,7 @@ width:600px;
 		<input id="boardNo" name="boardNo" readonly="readonly" type="hidden" value="${selectDetailTrade.boardNo }"/>
 		<table class="table" style="max-width: 700px" >		
 			<tr>  
-				<th style="padding:13px 0 0 15px" width="100">게시판 선택</th>
+				<th style="padding:13px 0 0 15px" width="100">진행 상태</th>
 				<td>
 				<div class="pull-left">
 					<select id="boardType" name="boardType"  class="form-control input-sm">				
@@ -240,7 +240,7 @@ width:600px;
     	</c:if>
     	<div class="pull-right">
    			<c:if test="${selectDetailTrade.boardType eq '판매' && SessionAuthority eq 'Admin'}">
-	    		<input type="button" class="btn btn-danger"  value="삭제" onclick="tradeDelete()" />
+	    		<input type="button" class="btn btn-danger"  value="삭제" onclick="tradeDelete()" />&nbsp;&nbsp;&nbsp;
 	    	</c:if>	 
 	    </div>
     </div>

@@ -79,7 +79,7 @@ display: flex;
 						<input type="password" class="form-control" id="memberPassword" placeholder="비밀번호를 입력하세요" name="memberPassword" autocomplete="off"
 						onkeydown="moveFocus()"/>
 					</div>
-					<input type="button" class="btn btn-dark" onclick="memberLogin()" value="로그인"/>
+					<input type="button" class="btn btn-dark" onclick="memberLogin()" value="확인"/>
 					
 				</form>
 			</div>
