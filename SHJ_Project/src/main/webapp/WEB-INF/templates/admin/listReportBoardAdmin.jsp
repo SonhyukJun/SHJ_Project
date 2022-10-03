@@ -107,7 +107,7 @@ display: inline-block;
 						<th style="max-width: 100px">신고날짜</th>	
 						<th style="max-width: 150px">신고내용</th>			
 						<th style="max-width: 100px">신고자</th>
-						<th style="max-width: 100px">신고처리</th>
+						<th style="max-width: 100px">권한</th>
 							
 					</tr>
 				<tbody>

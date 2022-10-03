@@ -98,7 +98,7 @@ display: inline-block;
 			<input type="button" onclick="location.href='tradeList.do'" class="btn btn-dark" value="목록으로"/>   
     	</div>
     	<div class="pull-right">
-    		<input type="submit" form="insert" class="btn btn-dark"  value="글쓰기"  formaction="modifyInsert.do" formmethod="post" />
+    		<input type="submit" form="insert" class="btn btn-dark"  value="수정완료"  formaction="modifyInsert.do" formmethod="post" />
     	</div>
 	</div>	
 </div>
