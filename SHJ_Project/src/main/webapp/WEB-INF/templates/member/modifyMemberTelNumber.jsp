@@ -53,11 +53,15 @@ display: flex;
 	function modifyMemberTelNumber() {
 		var id = $('#memberId').val();
 		var tel = $('#memberFirstNumber').val() + $('#memberMiddleNumber').val() + $('#memberLastNumber').val();
+		var checkTel = /^[0-9]{11}$/;
 		
 		if($('#memberMiddleNumber').val()== "" || $('#memberLastNumber').val() == ""){
 			alert("전화번호에 빈칸이 존재합니다.\n확인해주세요.")
 		} else if ($('#memberMiddleNumber').val().length < 4 || $('#memberLastNumber').val().length < 4){
 			alert("전화번호 형식이 맞지않습니다.")
+		} else if (!checkTel.test(tel)) {
+			alert("전화번호는 숫자만 입력해주세요.")
+			return false;
 		} else {			
 			$.ajax({
 				url: 'modifyMemberTelNumber.do',
