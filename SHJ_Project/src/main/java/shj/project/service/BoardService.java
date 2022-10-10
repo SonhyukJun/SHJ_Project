@@ -108,6 +108,8 @@ public interface BoardService {
 	
 	void replyQna(int qnaBoardNo) throws Exception;
 	
+	void replyQnaDelete(int qnaBoardNo) throws Exception;
+	
 	//***********************************************************************
 	
 	void replyInsert(ReplyQnaBoardVO replyQnaBoardVo) throws Exception;
@@ -115,4 +117,6 @@ public interface BoardService {
 	ReplyQnaBoardVO replyView(int qnaBoardNo) throws Exception;
 	
 	void replyModify(ReplyQnaBoardVO replyQnaBoardVo) throws Exception;
+	
+	void replyDelete(int qnaBoardNo) throws Exception;
 }

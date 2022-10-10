@@ -265,6 +265,11 @@ public class BoardDAOMybatis extends EgovAbstractMapper implements BoardDAO {
 	public void replyQna(int qnaBoardNo) throws Exception {
 		update("replyQna", qnaBoardNo);
 	}
+	
+	@Override
+	public void replyQnaDelete(int qnaBoardNo) throws Exception {
+		update("replyQnaDelete", qnaBoardNo);
+	}
 
 	// ***********************************************************************
 	
@@ -281,6 +286,11 @@ public class BoardDAOMybatis extends EgovAbstractMapper implements BoardDAO {
 	@Override
 	public void replyModify(ReplyQnaBoardVO replyQnaBoardVo) throws Exception {
 		update("replyModify", replyQnaBoardVo);
+	}
+
+	@Override
+	public void replyDelete(int qnaBoardNo) throws Exception {
+		delete("replyDelete", qnaBoardNo);
 	}
 	
 }

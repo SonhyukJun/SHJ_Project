@@ -33,6 +33,7 @@
 			success: function(data) {
 				if(data=="ok"){
 					alert("답글 삭제 성공")
+					location = "listQnaBoardAdmin.do";
 				}
 			}
 		})

@@ -107,6 +107,8 @@ public interface BoardDAO {
 	QnaBoardVO userQna(int qnaBoardNo) throws Exception;
 	
 	void replyQna(int qnaBoardNo) throws Exception;
+	
+	void replyQnaDelete(int qnaBoardNo) throws Exception;
 
 	//***********************************************************************
 	
@@ -115,4 +117,6 @@ public interface BoardDAO {
 	ReplyQnaBoardVO replyView(int qnaBoardNo) throws Exception;
 	
 	void replyModify(ReplyQnaBoardVO replyQnaBoardVo) throws Exception;
+	
+	void replyDelete(int qnaBoardNo) throws Exception;
 }

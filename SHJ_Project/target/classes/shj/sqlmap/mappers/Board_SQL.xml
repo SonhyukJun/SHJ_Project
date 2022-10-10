@@ -316,6 +316,10 @@
 		update qnaboard set qnaCheck="Y" where qnaBoardNo=#{qnaBoardNo}
 	</update>
 	
+	<update id="replyQnaDelete">
+		update qnaboard set qnaCheck="N" where qnaBoardNo=#{qnaBoardNo}
+	</update>
+	
 <!-- **************************************************************************************************************************** -->
 	<resultMap type="replyqnaboard" id="replyqnaboardResult">
 		<result property="replyQnaBoardNo" column="replyQnaBoardNo" />
@@ -337,4 +341,8 @@
 	<update id="replyModify">
 		update replyqnaboard set replyContent=#{replyContent} where qnaBoardNo=#{qnaBoardNo} 
 	</update>
+	
+	<delete id="replyDelete">
+		delete from replyqnaboard where qnaBoardNo=#{qnaBoardNo}
+	</delete>
 </mapper>

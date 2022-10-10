@@ -271,6 +271,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void replyQna(int qnaBoardNo) throws Exception {
 		dao.replyQna(qnaBoardNo);
+	}	
+
+	@Override
+	public void replyQnaDelete(int qnaBoardNo) throws Exception {
+		dao.replyQnaDelete(qnaBoardNo);
 	}
 
 	// ***********************************************************************
@@ -288,6 +293,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void replyModify(ReplyQnaBoardVO replyQnaBoardVo) throws Exception {
 		dao.replyModify(replyQnaBoardVo);
+	}
+
+	@Override
+	public void replyDelete(int qnaBoardNo) throws Exception {
+		dao.replyDelete(qnaBoardNo);
 	}
 	
 }
