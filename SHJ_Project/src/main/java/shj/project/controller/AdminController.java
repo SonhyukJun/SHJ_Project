@@ -22,6 +22,8 @@ import shj.project.service.BoardVO;
 import shj.project.service.BuyBoardVO;
 import shj.project.service.MemberService;
 import shj.project.service.MemberVO;
+import shj.project.service.QnaBoardVO;
+import shj.project.service.ReplyQnaBoardVO;
 import shj.project.service.ReportBoardVO;
 import shj.project.service.ReviewBoardVO;
 
@@ -331,16 +333,15 @@ public class AdminController {
 		data = "ok";
 		return data;
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/tradeDeleteAdmin.do", method = RequestMethod.POST)
-	public String tradeDeleteAdmin(int boardNo,
-			HttpSession session, HttpServletRequest request) throws Exception {
+	@RequestMapping(value = "/tradeDeleteAdmin.do", method = RequestMethod.POST)
+	public String tradeDeleteAdmin(int boardNo, HttpSession session, HttpServletRequest request) throws Exception {
 		String data = "";
 		String sessionAuthority = "";
 		session = request.getSession();
 		sessionAuthority = (String) session.getAttribute("SessionAuthority");
-		if(sessionAuthority.equals("Admin")) {
+		if (sessionAuthority.equals("Admin")) {
 			serviceB.tradeDelete(boardNo);
 			data = "ok";
 		} else {
@@ -349,4 +350,92 @@ public class AdminController {
 		return data;
 	}
 
+	@RequestMapping(value = "/listQnaBoardAdmin.do", method = RequestMethod.GET)
+	public String listQnaBoardAdminForm(HttpSession session, HttpServletRequest request, Model model,
+			QnaBoardVO qnaBoardVo) throws Exception {
+		String sessionAuthority = "";
+		session = request.getSession();
+		sessionAuthority = (String) session.getAttribute("SessionAuthority");
+		if (sessionAuthority.equals("Admin")) {
+			List<QnaBoardVO> list = serviceB.qnaList(qnaBoardVo);
+			model.addAttribute("qnaList", list);
+			return "admin/listQnaBoardAdmin";
+		} else {
+			return "authorityCheck";
+		}
+	}
+	
+	@RequestMapping(value = "/userQna.do", method = RequestMethod.GET)
+	public String myQnaForm(QnaBoardVO qnaBoardVo, int qnaBoardNo, Model model, HttpSession session,
+			HttpServletRequest request) throws Exception {
+		String sessionAuthority = "";
+		session = request.getSession();
+		sessionAuthority = (String) session.getAttribute("SessionAuthority");
+		if (sessionAuthority.equals("Admin")) {			
+			model.addAttribute("userQna", serviceB.myQna(qnaBoardNo));
+			model.addAttribute("replyView", serviceB.replyView(qnaBoardNo));
+			return "admin/userQna";
+		} else {
+			return "authorityCheck";
+		}	
+	}
+	
+	@RequestMapping(value = "/replyInsert.do", method = RequestMethod.GET)
+	public String replyInsertForm(@ModelAttribute("userQna") QnaBoardVO qnaBoardVo, int qnaBoardNo, Model model, HttpSession session,
+			HttpServletRequest request) throws Exception {
+		String sessionAuthority = "";
+		session = request.getSession();
+		sessionAuthority = (String) session.getAttribute("SessionAuthority");
+		if (sessionAuthority.equals("Admin")) {			
+			model.addAttribute("userQna", serviceB.myQna(qnaBoardNo));
+			return "admin/replyInsert";
+		} else {
+			return "authorityCheck";
+		}		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/replyInsert.do", method = RequestMethod.POST)
+	public String replyInsert(ReplyQnaBoardVO replyQnaBoardVo, int qnaBoardNo, String replyContent,
+			HttpSession session, HttpServletRequest request) throws Exception {
+		String data = "";
+		String sessionId = "";
+		session = request.getSession();
+		sessionId = (String) session.getAttribute("SessionId");
+		replyQnaBoardVo.setQnaBoardNo(qnaBoardNo);
+		replyQnaBoardVo.setReplyContent(replyContent);
+		replyQnaBoardVo.setMemberId(sessionId);
+		serviceB.replyQna(qnaBoardNo);
+		serviceB.replyInsert(replyQnaBoardVo);
+		data = "ok";
+		return data;
+	}
+	
+	@RequestMapping(value = "/replyModify.do", method = RequestMethod.GET)
+	public String replyModifyForm(@ModelAttribute("userQna") QnaBoardVO qnaBoardVo,
+			@ModelAttribute("replyView") ReplyQnaBoardVO replyQnaBoardVo, int qnaBoardNo, Model model, HttpSession session,
+			HttpServletRequest request) throws Exception {
+		String sessionAuthority = "";
+		session = request.getSession();
+		sessionAuthority = (String) session.getAttribute("SessionAuthority");
+		if (sessionAuthority.equals("Admin")) {			
+			model.addAttribute("userQna", serviceB.myQna(qnaBoardNo));
+			model.addAttribute("replyView", serviceB.replyView(qnaBoardNo));
+			return "admin/replyModify";
+		} else {
+			return "authorityCheck";
+		}		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/replyModify.do", method = RequestMethod.POST)
+	public String replyModify(ReplyQnaBoardVO replyQnaBoardVo,
+			int qnaBoardNo, String replyContent) throws Exception {
+		String data = "";
+		replyQnaBoardVo.setQnaBoardNo(qnaBoardNo);
+		replyQnaBoardVo.setReplyContent(replyContent);
+		serviceB.replyModify(replyQnaBoardVo);
+		data = "ok";
+		return data;
+	}
 }

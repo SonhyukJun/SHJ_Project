@@ -60,10 +60,12 @@
 												<li><a class="dropdown-item" href="listBuyBoardAdmin.do">거래현황</a></li>
 												<li><a class="dropdown-item" href="listReviewBoardAdmin.do">후기조회</a></li>
 												<li><a class="dropdown-item" href="listReportBoardAdmin.do">신고관리</a></li>
+												<li><a class="dropdown-item" href="listQnaBoardAdmin.do">문의관리</a></li>
 											</ul>
 									</li>
                         			<!-- <li class="nav-item"><a class="nav-link" href="adminPage.do">관리메뉴</a></li> -->
                         		<% } else {%>
+                        			<li class="nav-item"><a class="nav-link" href="myQnaList.do">문의하기</a></li>
                         			<li class="nav-item"><a class="nav-link" href="myPage.do">마이페이지</a></li>
                         		<% } %>
                         <li class="nav-item"><a class="nav-link" href="logout.do">로그아웃</a></li>

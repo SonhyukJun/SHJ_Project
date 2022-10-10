@@ -8,6 +8,8 @@ import egovframework.rte.psl.dataaccess.EgovAbstractMapper;
 import shj.project.service.BoardDAO;
 import shj.project.service.BoardVO;
 import shj.project.service.BuyBoardVO;
+import shj.project.service.QnaBoardVO;
+import shj.project.service.ReplyQnaBoardVO;
 import shj.project.service.ReportBoardVO;
 import shj.project.service.ReviewBoardVO;
 
@@ -181,6 +183,11 @@ public class BoardDAOMybatis extends EgovAbstractMapper implements BoardDAO {
 		int result = selectOne("totalReview", reviewBoardVo);
 		return result;
 	}
+	
+	@Override
+	public List<ReviewBoardVO> myReview(ReviewBoardVO reviewBoardVo) throws Exception {
+		return selectList("myReview", reviewBoardVo);
+	}
 
 	// ***********************************************************************
 
@@ -217,4 +224,63 @@ public class BoardDAOMybatis extends EgovAbstractMapper implements BoardDAO {
 		return selectList("listReportBoardAdmin", reportBoardVo);
 	}
 
+	// ***********************************************************************
+	
+	@Override
+	public void qnaInsert(QnaBoardVO qnaBoardVo) throws Exception {
+		insert("qnaInsert", qnaBoardVo);
+	}
+
+	@Override
+	public List<QnaBoardVO> myQnaList(QnaBoardVO qnaBoardVo) throws Exception {
+		return selectList("myQnaList", qnaBoardVo);
+	}
+
+	@Override
+	public QnaBoardVO myQna(int qnaBoardNo) throws Exception {		
+		return selectOne("myQna", qnaBoardNo);
+	}
+
+	@Override
+	public void qnaModify(QnaBoardVO qnaBoardVo) throws Exception {
+		update("qnaModify", qnaBoardVo);
+	}
+
+	@Override
+	public void qnaDelete(QnaBoardVO qnaBoardVo) throws Exception {
+		delete("qnaDelete", qnaBoardVo);
+	}
+
+	@Override
+	public List<QnaBoardVO> qnaList(QnaBoardVO qnaBoardVo) throws Exception {
+		return selectList("qnaList", qnaBoardVo);
+	}
+
+	@Override
+	public QnaBoardVO userQna(int qnaBoardNo) throws Exception {
+		return selectOne("userQna", qnaBoardNo);
+	}
+	
+	@Override
+	public void replyQna(int qnaBoardNo) throws Exception {
+		update("replyQna", qnaBoardNo);
+	}
+
+	// ***********************************************************************
+	
+	@Override
+	public void replyInsert(ReplyQnaBoardVO replyQnaBoardVo) throws Exception {
+		insert("replyInsert", replyQnaBoardVo);
+	}
+
+	@Override
+	public ReplyQnaBoardVO replyView(int qnaBoardNo) throws Exception {
+		return selectOne("replyView", qnaBoardNo);
+	}
+
+	@Override
+	public void replyModify(ReplyQnaBoardVO replyQnaBoardVo) throws Exception {
+		update("replyModify", replyQnaBoardVo);
+	}
+	
 }

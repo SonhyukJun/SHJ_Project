@@ -72,6 +72,8 @@ public interface BoardDAO {
 	
 	int totalReview(ReviewBoardVO reviewBoardVo) throws Exception;
 	
+	List<ReviewBoardVO> myReview(ReviewBoardVO reviewBoardVo) throws Exception;
+	
 	//***********************************************************************
 	
 	void reportInsert(ReportBoardVO reportBoardVo) throws Exception;
@@ -88,5 +90,29 @@ public interface BoardDAO {
 	
 	List<ReportBoardVO> listReportBoardAdmin(ReportBoardVO reportBoardVo) throws Exception;
 	
+	//***********************************************************************
+	
+	void qnaInsert(QnaBoardVO qnaBoardVo) throws Exception;
+	
+	List<QnaBoardVO> myQnaList(QnaBoardVO qnaBoardVo) throws Exception;
+	
+	QnaBoardVO myQna(int qnaBoardNo) throws Exception;
+	
+	void qnaModify(QnaBoardVO qnaBoardVo) throws Exception;
+	
+	void qnaDelete(QnaBoardVO qnaBoardVo) throws Exception;
+	
+	List<QnaBoardVO> qnaList(QnaBoardVO qnaBoardVo) throws Exception;
+	
+	QnaBoardVO userQna(int qnaBoardNo) throws Exception;
+	
+	void replyQna(int qnaBoardNo) throws Exception;
 
+	//***********************************************************************
+	
+	void replyInsert(ReplyQnaBoardVO replyQnaBoardVo) throws Exception;
+	
+	ReplyQnaBoardVO replyView(int qnaBoardNo) throws Exception;
+	
+	void replyModify(ReplyQnaBoardVO replyQnaBoardVo) throws Exception;
 }

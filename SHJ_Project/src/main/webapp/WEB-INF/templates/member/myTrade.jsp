@@ -155,6 +155,9 @@ display: inline-block;
 .pull-left {
 	float: left !important
 }
+.stars {
+	color: #FFD700;
+}
 </style>
 <title>SHJ-JunGo</title>
 </head>
@@ -171,6 +174,9 @@ display: inline-block;
     </li>
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="tab" href="#menu2">구매내역</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#menu3">내 후기 보기</a>
     </li>
   </ul>
 
@@ -268,6 +274,37 @@ display: inline-block;
 							<input type="button" class="btn btn-success" onclick="reviewStatusCheck(${myTradeBuy.boardNo })" value="후기쓰기"/>
 						</td>
 						</c:if>
+					</tr>
+				</c:forEach>
+			</tbody>					
+			</table>
+		</div>
+	</div>
+    </div>
+    <div id="menu3" class="container tab-pane fade"><br>
+      	<div class="container">
+		<div class="text-center">
+			<h2 class="section-heading">내 후기 보기</h2>
+			<table class="table">
+			<thead>
+				<tr>
+					<th style="width: 100px">거래번호</th>
+					<th style="width: 100px">구매자</th>
+					<th style="width: 100px">별점</th>
+					<th style="width: 150px">구매후기</th>									
+				<tr>
+			</tr>
+			<tbody>
+				<c:forEach var="myReview" items="${myReview }">					
+					<tr>
+						<td><input type="hidden" id="buyBoardNo" value="${myReview.buyBoardNo }" /> ${myReview.buyBoardNo}</td>
+						<td>${myReview.buyId}</td>						
+						<td>
+						<c:forEach var="a" begin="1" end="${myReview.countingStars}">
+        						<label class="stars">★</label>
+        				</c:forEach>						
+						</td>
+						<td>${myReview.reviewContent}</td>						
 					</tr>
 				</c:forEach>
 			</tbody>					

@@ -1,5 +1,7 @@
 package shj;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import shj.project.service.BoardService;
 import shj.project.service.BoardVO;
+import shj.project.service.QnaBoardVO;
 
 @Controller
 public class MainController {
@@ -60,6 +63,22 @@ public class MainController {
 	@RequestMapping(value = "/tradeForm.do", method = RequestMethod.GET)
 	public String tradeForm() {
 		return "trade/tradeMain";
+	}
+
+	@RequestMapping(value = "/myQnaList.do", method = RequestMethod.GET)
+	public String myQnaList(QnaBoardVO qnaBoardVo, Model model, HttpSession session, HttpServletRequest request)
+			throws Exception {
+		String sessionId = "";
+		session = request.getSession();
+		sessionId = (String) session.getAttribute("SessionId");
+		if (sessionId != null) {
+			qnaBoardVo.setMemberId(sessionId);
+			List<QnaBoardVO> list = service.myQnaList(qnaBoardVo);
+			model.addAttribute("myQnaList", list);
+			return "qna/qnaList";
+		} else {
+			return "loginCheck";
+		}
 	}
 
 }

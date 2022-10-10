@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +25,7 @@ import shj.project.service.BoardService;
 import shj.project.service.BoardVO;
 import shj.project.service.BuyBoardVO;
 import shj.project.service.MemberService;
+import shj.project.service.QnaBoardVO;
 import shj.project.service.ReportBoardVO;
 import shj.project.service.ReviewBoardVO;
 
@@ -250,16 +252,18 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/myTrade.do", method = RequestMethod.GET)
-	public String myTradeSellForm(HttpSession session, HttpServletRequest request, Model model, BoardVO boardVo)
-			throws Exception {
+	public String myTradeSellForm(HttpSession session, HttpServletRequest request, 
+			Model model, BoardVO boardVo, ReviewBoardVO reviewBoardVo) throws Exception {
 		String memberId = "";
 		session = request.getSession();
 		memberId = (String) session.getAttribute("SessionId");
 		if (memberId != null) {
 			boardVo.setMemberId(memberId);
 			boardVo.setBuyId(memberId);
+			reviewBoardVo.setSellId(memberId);
 			model.addAttribute("myTradeSell", service.myTradeSell(boardVo));
 			model.addAttribute("myTradeBuy", service.myTradeBuy(boardVo));
+			model.addAttribute("myReview", service.myReview(reviewBoardVo));
 			return "member/myTrade";
 		} else {
 			return "loginCheck";
@@ -371,6 +375,7 @@ public class BoardController {
 
 		return "trade/reviewView";
 	}
+	
 
 	@RequestMapping(value = "/dangerMember.do", method = RequestMethod.GET)
 	public String dangerMemberForm(@RequestParam(name = "boardNo") int boardNo,
@@ -397,4 +402,82 @@ public class BoardController {
 		data = "ok";
 		return data;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/qnaInsert.do", method = RequestMethod.POST)
+	public String qnaInsert(HttpSession session, HttpServletRequest request,
+			QnaBoardVO qnaBoardVo) throws Exception {
+		String data = "";
+		String sessionId = "";
+		session = request.getSession();
+		sessionId = (String) session.getAttribute("SessionId");
+		qnaBoardVo.setMemberId(sessionId);
+		service.qnaInsert(qnaBoardVo);
+		data = "ok";
+		return data;		
+	}	
+	
+	@RequestMapping(value = "/qnaInsert.do", method = RequestMethod.GET)
+	public String qnaInsertForm(HttpSession session, HttpServletRequest request) {
+		String sessionId = "";
+		session = request.getSession();
+		sessionId = (String) session.getAttribute("SessionId");
+		if(sessionId != null) {
+			return "qna/qnaInsert";
+		} else {
+			return "loginCheck";
+		}
+	}
+	
+	@RequestMapping(value = "/myQna.do", method = RequestMethod.GET)
+	public String myQnaForm(int qnaBoardNo, Model model, HttpSession session,
+			HttpServletRequest request) throws Exception {
+		String sessionId = "";
+		session = request.getSession();
+		sessionId = (String) session.getAttribute("SessionId");
+		if(sessionId != null) {			
+			model.addAttribute("myQna", service.myQna(qnaBoardNo));
+			model.addAttribute("replyView", service.replyView(qnaBoardNo));
+			return "qna/myQna";
+		} else {
+			return "loginCheck";
+		}		
+	}
+	
+	@RequestMapping(value = "/modifyQna.do", method = RequestMethod.GET)
+	public String modifyQnaForm(@ModelAttribute("myQna") QnaBoardVO qnaBoardVo, int qnaBoardNo, Model model, HttpSession session,
+			HttpServletRequest request) throws Exception {
+		String sessionId = "";
+		session = request.getSession();
+		sessionId = (String) session.getAttribute("SessionId");
+		if(sessionId != null) {			
+			model.addAttribute("myQna", service.myQna(qnaBoardNo));
+			return "qna/modifyQna";
+		} else {
+			return "loginCheck";
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value ="/modifyQna.do", method = RequestMethod.POST)
+	public String modifyQna(QnaBoardVO qnaBoardVo, int qnaBoardNo, String qnaTitle, String qnaContent) throws Exception {
+		String data = "";
+		qnaBoardVo.setQnaBoardNo(qnaBoardNo);
+		qnaBoardVo.setQnaTitle(qnaTitle);
+		qnaBoardVo.setQnaContent(qnaContent);
+		service.qnaModify(qnaBoardVo);
+		data = "ok";
+		return data;		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/qnaDelete.do", method = RequestMethod.POST)
+	public String deleteQna(QnaBoardVO qnaBoardVo, int qnaBoardNo) throws Exception {
+		String data = "";
+		qnaBoardVo.setQnaBoardNo(qnaBoardNo);
+		service.qnaDelete(qnaBoardVo);
+		data = "ok";
+		return data;
+	}
+
 }

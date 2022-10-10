@@ -233,6 +233,10 @@
 		select count(*) from reviewboard
 	</select>
 	
+	<select id="myReview" resultMap="reviewboardResult">
+		SELECT * FROM reviewboard WHERE sellId=#{sellId}
+	</select>
+	
 <!-- **************************************************************************************************************************** -->	
 	<resultMap type="reportboard" id="reportboardResult">
 		<result property="reportBoardNo" column="reportBoardNo" />
@@ -268,4 +272,69 @@
 		order by reportDate desc
 		limit #{startIndex}, #{endIndex}
 	</select>
+	
+<!-- **************************************************************************************************************************** -->
+	<resultMap type="qnaboard" id="qnaboardResult">
+		<result property="qnaBoardNo" column="qnaBoardNo" />
+		<result property="qnaTitle" column="qnaTitle" />		
+		<result property="qnaContent" column="qnaContent" />
+		<result property="qnaWdate" column="qnaWdate" />
+		<result property="memberId" column="memberId" />
+		<result property="qnaCheck" column="qnaCheck" />	
+	</resultMap>
+	
+	<insert id="qnaInsert">
+		insert into qnaboard (qnaTitle, qnaContent, qnaWdate, memberId)
+		values(#{qnaTitle}, #{qnaContent}, now(), #{memberId})
+	</insert>
+	
+	<select id="myQnaList" resultMap="qnaboardResult">
+		select * from qnaboard where memberId=#{memberId} order by qnaBoardNo desc
+	</select>
+	
+	<select id="myQna" resultMap="qnaboardResult">
+		select * from qnaboard where qnaBoardNo=#{qnaBoardNo}
+	</select>
+	
+	<update id="qnaModify">
+		update qnaboard set qnaTitle=#{qnaTitle}, qnaContent=#{qnaContent} where qnaBoardNo=#{qnaBoardNo}
+	</update>
+	
+	<delete id="qnaDelete">
+		delete from qnaboard where qnaBoardNo=#{qnaBoardNo}
+	</delete>
+	
+	<select id="qnaList" resultMap="qnaboardResult">
+		select * from qnaboard where 1=1 order by qnaBoardNo desc
+	</select>
+	
+	<select id="userQna" resultMap="qnaboardResult">
+		select * from qnaboard where qnaBoardNo=#{qnaBoardNo}
+	</select>
+	
+	<update id="replyQna">
+		update qnaboard set qnaCheck="Y" where qnaBoardNo=#{qnaBoardNo}
+	</update>
+	
+<!-- **************************************************************************************************************************** -->
+	<resultMap type="replyqnaboard" id="replyqnaboardResult">
+		<result property="replyQnaBoardNo" column="replyQnaBoardNo" />
+		<result property="qnaBoardNo" column="qnaBoardNo" />	
+		<result property="replyContent" column="replyContent" />
+		<result property="replyWdate" column="replyWdate" />
+		<result property="memberId" column="memberId" />
+	</resultMap>
+	
+	<insert id="replyInsert">
+		insert into replyqnaboard (qnaBoardNo, replyContent, memberId)
+		values(#{qnaBoardNo}, #{replyContent}, #{memberId})
+	</insert>
+	
+	<select id="replyView" resultMap="replyqnaboardResult">
+		SELECT * FROM replyqnaboard WHERE qnaBoardNo=#{qnaBoardNo}
+	</select>
+	
+	<update id="replyModify">
+		update replyqnaboard set replyContent=#{replyContent} where qnaBoardNo=#{qnaBoardNo} 
+	</update>
 </mapper>

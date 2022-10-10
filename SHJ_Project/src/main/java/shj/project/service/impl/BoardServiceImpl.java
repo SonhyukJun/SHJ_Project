@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import shj.project.service.BoardService;
 import shj.project.service.BoardVO;
 import shj.project.service.BuyBoardVO;
+import shj.project.service.QnaBoardVO;
+import shj.project.service.ReplyQnaBoardVO;
 import shj.project.service.ReportBoardVO;
 import shj.project.service.ReviewBoardVO;
 import shj.project.service.BoardDAO;
@@ -180,7 +182,13 @@ public class BoardServiceImpl implements BoardService {
 	public int totalReviewBoard(ReviewBoardVO reviewBoardVo) throws Exception {
 		int result = dao.totalReviewBoard(reviewBoardVo);
 		return result;
+	}	
+
+	@Override
+	public List<ReviewBoardVO> myReview(ReviewBoardVO reviewBoardVo) throws Exception {
+		return dao.myReview(reviewBoardVo);
 	}
+
 	
 	//***********************************************************************
 
@@ -223,4 +231,63 @@ public class BoardServiceImpl implements BoardService {
 		return dao.listReportBoardAdmin(reportBoardVo);
 	}
 
+	// ***********************************************************************
+	
+	@Override
+	public void qnaInsert(QnaBoardVO qnaBoardVo) throws Exception {
+		dao.qnaInsert(qnaBoardVo);
+	}
+
+	@Override
+	public List<QnaBoardVO> myQnaList(QnaBoardVO qnaBoardVo) throws Exception {
+		return dao.myQnaList(qnaBoardVo);
+	}
+
+	@Override
+	public QnaBoardVO myQna(int qnaBoardNo) throws Exception {
+		return dao.myQna(qnaBoardNo);
+	}
+
+	@Override
+	public void qnaModify(QnaBoardVO qnaBoardVo) throws Exception {
+		dao.qnaModify(qnaBoardVo);
+	}
+
+	@Override
+	public void qnaDelete(QnaBoardVO qnaBoardVo) throws Exception {
+		dao.qnaDelete(qnaBoardVo);
+	}
+
+	@Override
+	public List<QnaBoardVO> qnaList(QnaBoardVO qnaBoardVo) throws Exception {
+		return dao.qnaList(qnaBoardVo);
+	}
+
+	@Override
+	public QnaBoardVO userQna(int qnaBoardNo) throws Exception {
+		return dao.userQna(qnaBoardNo);
+	}
+	
+	@Override
+	public void replyQna(int qnaBoardNo) throws Exception {
+		dao.replyQna(qnaBoardNo);
+	}
+
+	// ***********************************************************************
+	
+	@Override
+	public void replyInsert(ReplyQnaBoardVO replyQnaBoardVo) throws Exception {
+		dao.replyInsert(replyQnaBoardVo);
+	}
+
+	@Override
+	public ReplyQnaBoardVO replyView(int qnaBoardNo) throws Exception {
+		return dao.replyView(qnaBoardNo);
+	}
+
+	@Override
+	public void replyModify(ReplyQnaBoardVO replyQnaBoardVo) throws Exception {
+		dao.replyModify(replyQnaBoardVo);
+	}
+	
 }
