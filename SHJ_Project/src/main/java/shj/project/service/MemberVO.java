@@ -10,6 +10,7 @@ public class MemberVO {
 	private String memberPassword;
 	private String memberName;
 	private String memberTelNumber;
+	private String memberPostCode;
 	private String memberAddress;
 	private String authority;
 	

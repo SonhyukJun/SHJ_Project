@@ -61,9 +61,9 @@ display: inline-block;
 			<table class="table">
 				<thead>
 					<tr>
-						<th style="width: 100px">글번호</th>
+						<th style="width: 50px">글번호</th>
 						<th style="width: 100px">제목</th>
-						<th style="width: 100px">작성일</th>
+						<th style="width: 80px">작성일</th>
 						<th style="width: 100px">답변상태</th>
 					</tr>
 				<tbody>
@@ -73,7 +73,12 @@ display: inline-block;
 							<td>${myQnaList.qnaBoardNo}</td>
 							<td>${myQnaList.qnaTitle}</td>												
 							<td><fmt:formatDate value="${myQnaList.qnaWdate}" pattern="yyyy-MM-dd"/></td>
-							<td>${myQnaList.qnaCheck}</td>											
+							<c:if test="${myQnaList.qnaCheck eq 'Y'}">
+							<td>답변 등록</td>									
+							</c:if>
+							<c:if test="${myQnaList.qnaCheck eq 'N'}">
+							<td>답변 미등록</td>									
+							</c:if>
 						</tr>
 					</c:forEach>
 				</tbody>					

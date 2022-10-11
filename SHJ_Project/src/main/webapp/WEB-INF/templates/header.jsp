@@ -24,8 +24,9 @@
     	String sessionPassword = (String) session.getAttribute("SessionPassword");
     	String sessionName = (String) session.getAttribute("SessionName");
     	String sessionTelNumber = (String) session.getAttribute("SessionTelNumber");
+    	String sessionPostCode = (String) session.getAttribute("SessionPostCode");
     	String sessionAddress = (String) session.getAttribute("SessionAddress");
-    	String sessionAuthority = (String) session.getAttribute("SessionAuthority");
+    	String sessionAuthority = (String) session.getAttribute("SessionAuthority");    	
     	
     	String buyMemberId = (String) session.getAttribute("BuyMemberId");
     	Integer buyBoardNo = (Integer) session.getAttribute("BuyBoardNo");

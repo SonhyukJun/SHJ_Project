@@ -5,7 +5,8 @@
 		<result property="memberId" column="memberId" />
 		<result property="memberPassword" column="memberPassword" />		
 		<result property="memberName" column="memberName" />
-		<result property="memberTelNumber" column="memberTelNumber" />		
+		<result property="memberTelNumber" column="memberTelNumber" />
+		<result property="memberPostCode" column="memberPostCode" />		
 		<result property="memberAddress" column="memberAddress" />		
 		<result property="authority" column="authority" />
 	</resultMap>
@@ -15,8 +16,8 @@
 	</select>
 	
 	<insert id="signUp">
-		insert into member (memberId, memberPassword, memberName, memberTelNumber, memberAddress) 
-		values(#{memberId}, #{memberPassword}, #{memberName}, #{memberTelNumber}, #{memberAddress})
+		insert into member (memberId, memberPassword, memberName, memberTelNumber, memberPostCode, memberAddress) 
+		values(#{memberId}, #{memberPassword}, #{memberName}, #{memberTelNumber}, #{memberPostCode}, #{memberAddress})
 	</insert>
 	
 	<select id="memberLogin" resultType="int">
@@ -39,6 +40,10 @@
 		select memberTelNumber from member where memberId=#{memberId}
 	</select>
 	
+	<select id="sessionPostCode" resultType="String">
+		select memberPostCode from member where memberId=#{memberId}
+	</select>
+	
 	<select id="sessionAddress" resultType="String">
 		select memberAddress from member where memberId=#{memberId}
 	</select>
@@ -56,7 +61,7 @@
 	</update>
 	
 	<update id="modifyMemberAddress">
-		update member set memberAddress=#{memberAddress} where memberId=#{memberId}
+		update member set memberPostCode=#{memberPostCode}, memberAddress=#{memberAddress} where memberId=#{memberId}
 	</update>
 	
 	<select id="totalStars" resultType="double">

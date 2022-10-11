@@ -18,6 +18,8 @@ public interface MemberDAO {
 	
 	String sessionTelNumber(String memberId) throws Exception;
 	
+	String sessionPostCode(String memberId) throws Exception;
+	
 	String sessionAddress(String memberId) throws Exception;
 	
 	String sessionAuthority(String memberId) throws Exception;

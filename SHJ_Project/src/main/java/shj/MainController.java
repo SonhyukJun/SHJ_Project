@@ -55,6 +55,7 @@ public class MainController {
 		session.removeAttribute("SessionPassword");
 		session.removeAttribute("SessionName");
 		session.removeAttribute("SessionTelNumber");
+		session.removeAttribute("SessionPostCode");
 		session.removeAttribute("SessionAddress");
 		session.removeAttribute("SessionAuthority");
 		return "main";

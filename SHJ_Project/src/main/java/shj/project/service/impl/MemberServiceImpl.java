@@ -64,6 +64,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public String sessionPostCode(String memberId) throws Exception {
+		String sessionPostCode = dao.sessionPostCode(memberId);
+		return sessionPostCode;
+	}
+
+	@Override
 	public String sessionAddress(String memberId) throws Exception {
 		String sessionAddress = dao.sessionAddress(memberId);
 		return sessionAddress;

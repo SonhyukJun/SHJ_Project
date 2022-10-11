@@ -51,6 +51,12 @@ public class MemberDAOMybatis extends EgovAbstractMapper implements MemberDAO {
 		String sessionTelNumber = selectOne("sessionTelNumber", memberId);
 		return sessionTelNumber;
 	}
+	
+	@Override
+	public String sessionPostCode(String memberId) throws Exception {
+		String sessionPostCode = selectOne("sessionPostCode", memberId);
+		return sessionPostCode;
+	}
 
 	@Override
 	public String sessionAddress(String memberId) throws Exception {

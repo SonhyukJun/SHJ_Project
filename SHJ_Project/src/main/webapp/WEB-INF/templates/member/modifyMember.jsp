@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +26,7 @@ display: inline-block;
 </style>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="resource/js/scripts.js"></script>
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 	function modifyMemberPassword() {
@@ -83,7 +86,8 @@ display: inline-block;
 			<table class="table">
 				<tr>
 					<th>아이디</th>
-					<td colspan="2">${SessionId}</td>
+					<td>${SessionId}</td>
+					<td></td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
@@ -91,18 +95,21 @@ display: inline-block;
 					<td><input type="button" class="btn btn-dark len" style="width: 120px" onclick="modifyMemberPassword()" value="비밀번호변경"/></td>
 				</tr>
 				<tr>
+					<c:set var="telnumber" value="${SessionTelNumber}"/>
+       				<c:set var="FirstNumber" value="${fn:substring(telnumber,0,3)}"/>
+       				<c:set var="MiddleNumber" value="${fn:substring(telnumber,3,4)}"/>
+       				<c:set var="LastNumber" value="${fn:substring(telnumber,7,8)}"/> 
 					<th>전화번호</th>
-					<td>${SessionTelNumber}</td>
+					<td align="center">${FirstNumber} - ${MiddleNumber}*** - ${LastNumber}***</td>
 					<td><input type="button" class="btn btn-dark len" style="width: 120px" onclick="modifyMemberTelNumber()" value="전화번호변경"/></td>
 				</tr>
 				<tr>
 					<th>주소</th>
-					<td>${SessionAddress}</td>
+					<td>(${SessionPostCode}) ${SessionAddress}</td>
 					<td><input type="button" class="btn btn-dark len" style="width: 120px" onclick="modifyMemberAddress()" value="주소변경"/></td>
 				</tr>
 			</table>
 			<input type="button" class="btn btn-dark len" onclick="location.href='main.do'" value="메인으로"/>
-			<!-- <input type="button" class="btn btn-dark len" onclick="save()" value="변경내용저장"/> -->
 		</div>
 	</div>
 </section>

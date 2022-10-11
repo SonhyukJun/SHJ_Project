@@ -61,12 +61,14 @@ public class MemberController {
 			String sessionPassword = service.sessionPassword(memberId);
 			String sessionName = service.sessionName(memberId);
 			String sessionTelNumber = service.sessionTelNumber(memberId);
+			String sessionPostCode = service.sessionPostCode(memberId);
 			String sessionAddress = service.sessionAddress(memberId);
 			String sessionAuthority = service.sessionAuthority(memberId);
 			session.setAttribute("SessionId", sessionId);
 			session.setAttribute("SessionPassword", sessionPassword);
 			session.setAttribute("SessionName", sessionName);
 			session.setAttribute("SessionTelNumber", sessionTelNumber);
+			session.setAttribute("SessionPostCode", sessionPostCode);
 			session.setAttribute("SessionAddress", sessionAddress);
 			session.setAttribute("SessionAuthority", sessionAuthority);
 			data = "ok";
@@ -179,12 +181,15 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping(value = "/modifyMemberAddress.do", method = RequestMethod.POST)
 	public String modifyMemberAddress(@RequestParam(name = "memberId") String memberId,
-			@RequestParam(name = "memberAddress") String memberAddress, MemberVO memberVo,
+			@RequestParam(name = "memberAddress") String memberAddress,
+			@RequestParam(name = "memberPostCode") String memberPostCode, MemberVO memberVo,
 			HttpSession session) throws Exception {
 		String data = "";
 		memberVo.setMemberId(memberId);
+		memberVo.setMemberPostCode(memberPostCode);
 		memberVo.setMemberAddress(memberAddress);
 		service.modifyMemberAddress(memberVo);
+		session.setAttribute("SessionPostCode", memberPostCode);
 		session.setAttribute("SessionAddress", memberAddress);
 		data = "ok";
 		return data;
